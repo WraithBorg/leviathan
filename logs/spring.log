@@ -1,0 +1,34 @@
+2020-07-03 21:37:23.389  INFO 2696 --- [restartedMain] com.io.hydralisk.HydraliskApplication    : Starting HydraliskApplication on SD-20200517RMDD with PID 2696 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+2020-07-03 21:37:23.393  INFO 2696 --- [restartedMain] com.io.hydralisk.HydraliskApplication    : No active profile set, falling back to default profiles: default
+2020-07-03 21:37:23.433  INFO 2696 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-03 21:37:23.434  INFO 2696 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-03 21:37:24.243  INFO 2696 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2020-07-03 21:37:24.250  INFO 2696 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-03 21:37:24.250  INFO 2696 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-03 21:37:24.303  INFO 2696 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/star]   : Initializing Spring embedded WebApplicationContext
+2020-07-03 21:37:24.303  INFO 2696 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 869 ms
+2020-07-03 21:37:24.436  INFO 2696 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-03 21:37:24.545  INFO 2696 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-03 21:37:24.571  INFO 2696 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path '/star'
+2020-07-03 21:37:24.580  INFO 2696 --- [restartedMain] com.io.hydralisk.HydraliskApplication    : Started HydraliskApplication in 1.56 seconds (JVM running for 2.294)
+2020-07-03 21:38:00.920  INFO 2696 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/star]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-03 21:38:00.920  INFO 2696 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-03 21:38:00.924  INFO 2696 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-07-03 21:38:31.120  INFO 2696 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-07-03 21:39:25.790  INFO 5740 --- [restartedMain] com.io.hydralisk.HydraliskApplication    : Starting HydraliskApplication on SD-20200517RMDD with PID 5740 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+2020-07-03 21:39:25.792  INFO 5740 --- [restartedMain] com.io.hydralisk.HydraliskApplication    : No active profile set, falling back to default profiles: default
+2020-07-03 21:39:25.829  INFO 5740 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-07-03 21:39:25.829  INFO 5740 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-07-03 21:39:26.627  INFO 5740 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2020-07-03 21:39:26.634  INFO 5740 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-03 21:39:26.634  INFO 5740 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-03 21:39:26.688  INFO 5740 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/star]   : Initializing Spring embedded WebApplicationContext
+2020-07-03 21:39:26.689  INFO 5740 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 859 ms
+2020-07-03 21:39:26.824  INFO 5740 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-03 21:39:26.936  INFO 5740 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-07-03 21:39:26.967  INFO 5740 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path '/star'
+2020-07-03 21:39:26.975  INFO 5740 --- [restartedMain] com.io.hydralisk.HydraliskApplication    : Started HydraliskApplication in 1.536 seconds (JVM running for 2.21)
+2020-07-03 21:39:31.934  INFO 5740 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/star]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-03 21:39:31.934  INFO 5740 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-03 21:39:31.939  INFO 5740 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-07-03 21:40:15.859  INFO 5740 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
