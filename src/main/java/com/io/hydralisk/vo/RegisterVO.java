@@ -6,6 +6,7 @@ public class RegisterVO {
     private String message;
     private String url;
 
+
     public RegisterVO(int error, String message, Object data, String url) {
         this.data = data;
         this.error = error;

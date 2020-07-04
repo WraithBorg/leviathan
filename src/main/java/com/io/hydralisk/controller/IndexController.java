@@ -8,6 +8,10 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(){
-        return "this is index test page。";
+        return "this is <H1>index </H1> page。";
+    }
+    @RequestMapping("/star")
+    public String star(){
+        return "this is index <H1>star </H1>page。";
     }
 }

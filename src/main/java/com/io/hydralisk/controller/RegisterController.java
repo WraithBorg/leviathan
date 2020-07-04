@@ -1,12 +1,15 @@
 package com.io.hydralisk.controller;
 
 import com.io.hydralisk.dto.RegisterDTO;
+import com.io.hydralisk.util.CommonUtils;
 import com.io.hydralisk.vo.RegisterVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 
 @RequestMapping("/register")
 @RestController
@@ -20,8 +23,12 @@ public class RegisterController {
     }
 
     @PostMapping(params = "m=regsave")
-    public RegisterVO regsave(RegisterDTO registerDTO){
+    public Object regsave(RegisterDTO registerDTO) {
         logger.info("用戶註冊註冊註冊。注册");
-        return new RegisterVO(1, "手机验证码出错", new ArrayList<>(), "http://localhost:8080/h5/pages/register/index");
+//        if (CommonUtils.isBlank(registerDTO.getTelephone()) || !CommonUtils.confPhone(registerDTO.getTelephone())) {
+//            return CommonUtils.ofMap("error", 1, "message", "请输入正确的手机号格式","data",new String[]{},"url","http://localhost:8080/h5/pages/register/index");
+//        }
+        Map  data = CommonUtils.ofMap(  "authcode", "zxcvb21345");
+        return CommonUtils.ofMap("error", 0, "data",data);
     }
 }
