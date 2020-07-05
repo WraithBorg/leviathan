@@ -12,8 +12,6 @@ public class ItemInfo {
     private Long id;
     @TableField(value = "name")
     private String name;
-    @TableField(value = "img_url")
-    private String imgUrl;
     @TableField(value = "price")
     private BigDecimal price;
     @TableField(value = "weight")
@@ -22,6 +20,25 @@ public class ItemInfo {
     private Long categoryId;
     @TableField(value = "buy_num")
     private Integer buyNum;
+    @TableField(value = "content")
+    private String content;
+
+
+
+
+
+    @TableField(exist = false)
+    private String defaultImg;
+
+
+    public String getDefaultImg() {
+        return defaultImg;
+    }
+
+    public void setDefaultImg(String defaultImg) {
+        this.defaultImg = defaultImg;
+    }
+
     public Long getId() {
         return id;
     }
@@ -36,14 +53,6 @@ public class ItemInfo {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
     }
 
     public BigDecimal getPrice() {
@@ -76,5 +85,13 @@ public class ItemInfo {
 
     public void setBuyNum(Integer buyNum) {
         this.buyNum = buyNum;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

@@ -4,6 +4,7 @@ public class ItemInfoVO {
     private Integer buy_num;
     private Integer cart_amount;
     private Long catid;
+    private String content;
     private String createtime;
     private String description;
     private Integer etime;
@@ -36,6 +37,15 @@ public class ItemInfoVO {
     private String videourl;
     private Integer view_num;
     private String weight;
+
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public Integer getBuy_num() {
         return buy_num;

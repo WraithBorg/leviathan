@@ -1,0 +1,335 @@
+20:02:23.707 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 2840 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+20:02:23.709 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+20:02:23.751 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20:02:23.751 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20:02:24.727 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+20:02:24.733 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+20:02:24.734 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+20:02:24.734 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+20:02:24.803 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+20:02:24.804 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1052 ms
+20:02:25.298 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+20:02:25.507 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+20:02:25.519 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+20:02:25.537 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+20:02:25.548 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 2.271 seconds (JVM running for 2.983)
+20:02:31.230 logback [http-nio-8888-exec-2] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:02:31.230 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+20:02:31.250 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 20 ms
+20:02:31.313 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+20:02:31.616 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+20:04:59.878 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+20:04:59.879 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+20:04:59.888 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+20:05:10.013 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 13748 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+20:05:10.016 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+20:05:10.079 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20:05:10.079 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20:05:11.036 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+20:05:11.043 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+20:05:11.044 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+20:05:11.044 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+20:05:11.102 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+20:05:11.102 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1023 ms
+20:05:11.618 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+20:05:11.799 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+20:05:11.812 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+20:05:11.830 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+20:05:11.839 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 2.237 seconds (JVM running for 2.936)
+20:05:26.701 logback [http-nio-8888-exec-2] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:05:26.701 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+20:05:26.709 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+20:05:26.770 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+20:05:27.085 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+20:09:01.633 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+20:09:01.634 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+20:09:01.642 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:14:52.076 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 2284 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:14:52.080 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:14:52.141 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:14:52.143 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:14:53.139 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:14:53.146 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:14:53.147 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:14:53.147 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:14:53.211 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:14:53.211 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1068 ms
+21:14:53.716 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:14:53.916 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:14:53.930 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:14:53.949 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:14:53.958 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 2.306 seconds (JVM running for 3.066)
+21:15:43.129 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:15:43.129 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:15:43.134 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+21:15:43.193 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:15:43.486 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:32:04.361 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+21:32:04.361 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:32:04.373 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:41:01.462 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 11652 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:41:01.464 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:41:01.520 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:41:01.520 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:41:02.444 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:41:02.450 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:41:02.451 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:41:02.451 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:41:02.508 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:41:02.508 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 988 ms
+21:41:03.004 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:41:03.180 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:41:03.192 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:41:03.210 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:41:03.219 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 2.156 seconds (JVM running for 2.836)
+21:43:18.697 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+21:50:26.222 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 15692 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:50:26.224 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:50:26.283 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:50:26.283 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:50:27.234 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:50:27.242 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:50:27.243 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:50:27.243 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:50:27.304 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:50:27.305 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1021 ms
+21:50:29.265 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:50:30.526 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:50:30.719 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:50:30.770 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:50:30.838 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.059 seconds (JVM running for 5.764)
+21:51:06.643 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:51:06.643 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:51:06.680 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 37 ms
+21:51:06.851 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:51:08.490 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:51:58.072 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+21:51:58.072 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:51:58.080 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:52:17.913 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 11456 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:52:17.916 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:52:17.961 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:52:17.961 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:52:18.901 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:52:18.907 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:52:18.908 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:52:18.908 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:52:18.964 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:52:18.964 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1002 ms
+21:52:20.893 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:52:22.130 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:52:22.312 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:52:22.361 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:52:22.431 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 4.935 seconds (JVM running for 5.608)
+21:52:32.481 logback [http-nio-8888-exec-3] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:52:32.481 logback [http-nio-8888-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:52:32.521 logback [http-nio-8888-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 40 ms
+21:52:32.700 logback [http-nio-8888-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:52:34.318 logback [http-nio-8888-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:53:21.265 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+21:53:21.265 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:53:21.275 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:53:24.703 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 11516 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:53:24.707 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:53:24.752 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:53:24.752 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:53:25.666 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:53:25.671 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:53:25.672 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:53:25.672 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:53:25.728 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:53:25.729 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 976 ms
+21:53:27.544 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:53:28.765 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:53:28.942 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:53:28.990 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:53:29.057 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 4.749 seconds (JVM running for 5.42)
+21:53:56.319 logback [http-nio-8888-exec-3] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:53:56.319 logback [http-nio-8888-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:53:56.358 logback [http-nio-8888-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 39 ms
+21:53:56.509 logback [http-nio-8888-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:53:58.132 logback [http-nio-8888-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:55:00.932 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+21:55:00.933 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:55:00.943 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:55:04.450 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 13132 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:55:04.452 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:55:04.505 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:55:04.505 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:55:05.424 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:55:05.431 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:55:05.432 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:55:05.432 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:55:05.490 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:55:05.490 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 985 ms
+21:55:07.406 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:55:08.678 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:55:08.853 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:55:08.905 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:55:08.977 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 4.936 seconds (JVM running for 5.644)
+21:55:46.092 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:55:46.092 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:55:46.127 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 34 ms
+21:55:46.280 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:55:47.828 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+21:59:15.879 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+21:59:15.879 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+21:59:15.887 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+21:59:38.863 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 12476 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+21:59:38.866 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+21:59:38.914 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+21:59:38.914 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+21:59:39.827 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+21:59:39.834 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+21:59:39.835 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+21:59:39.835 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+21:59:39.890 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+21:59:39.890 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 976 ms
+21:59:41.941 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+21:59:43.311 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+21:59:43.503 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+21:59:43.552 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+21:59:43.661 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.194 seconds (JVM running for 5.879)
+21:59:50.527 logback [http-nio-8888-exec-3] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:59:50.527 logback [http-nio-8888-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+21:59:50.567 logback [http-nio-8888-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 40 ms
+21:59:50.718 logback [http-nio-8888-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+21:59:52.314 logback [http-nio-8888-exec-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:02:54.846 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+22:02:54.847 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:02:54.854 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:02:58.305 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 16072 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+22:02:58.308 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+22:02:58.360 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:02:58.360 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:02:59.288 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+22:02:59.294 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:02:59.295 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:02:59.295 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+22:02:59.353 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+22:02:59.353 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 993 ms
+22:03:01.377 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:03:02.769 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:03:02.962 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:03:03.015 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+22:03:03.114 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.234 seconds (JVM running for 5.899)
+22:03:07.743 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:03:07.743 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+22:03:07.780 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 37 ms
+22:03:07.934 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:03:09.800 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:05:09.753 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+22:05:09.754 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:05:09.761 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:05:13.229 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 15640 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+22:05:13.232 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+22:05:13.282 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:05:13.283 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:05:14.281 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+22:05:14.289 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:05:14.289 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:05:14.290 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+22:05:14.350 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+22:05:14.350 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1067 ms
+22:05:16.365 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:05:17.705 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:05:17.914 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:05:17.961 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+22:05:18.073 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.271 seconds (JVM running for 5.961)
+22:05:25.478 logback [http-nio-8888-exec-2] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:05:25.479 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+22:05:25.518 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 39 ms
+22:05:25.681 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:05:27.301 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:13:16.652 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+22:13:16.653 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:13:16.661 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:13:20.426 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 11340 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+22:13:20.430 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+22:13:20.485 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:13:20.485 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:13:21.421 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+22:13:21.428 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:13:21.428 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:13:21.428 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+22:13:21.485 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+22:13:21.486 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1001 ms
+22:13:23.517 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:13:24.859 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:13:25.071 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:13:25.122 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+22:13:25.239 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.26 seconds (JVM running for 6.008)
+22:13:45.478 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:13:45.479 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+22:13:45.519 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 40 ms
+22:13:45.682 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:13:47.599 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:15:11.308 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+22:15:11.308 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:15:11.318 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:17:25.635 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 15104 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+22:17:25.637 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+22:17:25.680 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:17:25.680 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:17:26.628 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+22:17:26.635 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:17:26.635 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:17:26.636 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+22:17:26.694 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+22:17:26.694 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1014 ms
+22:17:28.679 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:17:30.014 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:17:30.205 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:17:30.257 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+22:17:30.356 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.138 seconds (JVM running for 5.808)
+22:17:39.120 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:17:39.121 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+22:17:39.158 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 37 ms
+22:17:39.325 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:17:40.901 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:20:24.355 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+22:20:24.355 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:20:24.364 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:20:28.159 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 904 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+22:20:28.161 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+22:20:28.209 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:20:28.209 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:20:29.169 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+22:20:29.176 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:20:29.177 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:20:29.177 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+22:20:29.233 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+22:20:29.234 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1025 ms
+22:20:31.303 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:20:32.800 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:20:33.025 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:20:33.077 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+22:20:33.196 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.438 seconds (JVM running for 6.094)
+22:20:35.964 logback [http-nio-8888-exec-1] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:20:35.964 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+22:20:36.000 logback [http-nio-8888-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 36 ms
+22:20:36.150 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:20:37.933 logback [http-nio-8888-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:21:18.076 logback [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+22:21:18.076 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+22:21:18.084 logback [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:25:16.750 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Starting HydraliskApplication on SD-20200517RMDD with PID 3672 (C:\app\ideaSpace\leviathan\target\classes started by Administrator in C:\app\ideaSpace\leviathan)
+22:25:16.752 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - No active profile set, falling back to default profiles: default
+22:25:16.798 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+22:25:16.798 logback [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+22:25:17.807 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8888 (http)
+22:25:17.814 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:25:17.814 logback [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:25:17.815 logback [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+22:25:17.870 logback [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring embedded WebApplicationContext
+22:25:17.870 logback [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1072 ms
+22:25:19.817 logback [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:25:21.156 logback [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+22:25:21.362 logback [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:25:21.415 logback [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8888 (http) with context path '/star'
+22:25:21.484 logback [restartedMain] INFO  c.io.hydralisk.HydraliskApplication - Started HydraliskApplication in 5.142 seconds (JVM running for 5.817)
+22:25:27.282 logback [http-nio-8888-exec-2] INFO  o.a.c.c.C.[.[localhost].[/star] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:25:27.282 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+22:25:27.323 logback [http-nio-8888-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 41 ms
+22:25:27.474 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:25:29.320 logback [http-nio-8888-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.

@@ -2,6 +2,7 @@ package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.domain.CategoryInfo;
+import com.io.hydralisk.util.CommonUtils;
 import com.io.hydralisk.vo.CategoryVO;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,12 @@ public class CategoryInfoConvert {
         categoryVO.setCatid(categoryInfo.getId());
         categoryVO.setDescription(categoryInfo.getName());
         categoryVO.setEx_table_id(0L);
-        categoryVO.setImgurl(CConstant.IMAGE_HOST+categoryInfo.getImgUrl());
+
+        if (CommonUtils.isNotBlank(categoryInfo.getImgUrl())){
+            categoryVO.setImgurl(CConstant.IMAGE_HOST+categoryInfo.getImgUrl());
+        }
+
+
         categoryVO.setOrderindex(0);
         categoryVO.setPid(categoryInfo.getPid());
         categoryVO.setStatus(1);
