@@ -1,12 +1,21 @@
 package com.io.hydralisk.dto;
 
-public class AddressDTO {
+public class ReceiptInfoDTO {
+    private Long id;
     private String truename;
     private String  telephone;
     private String  province_id;
     private String  city_id;
     private String   town_id;
     private String  address;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTruename() {
         return truename;

@@ -2,7 +2,7 @@ package com.io.hydralisk.vo;
 
 import java.util.Date;
 
-public class AddressVO {
+public class ReceiptInfoVO {
     private Long id;
     private Long userid;
     private String address;
@@ -148,25 +148,25 @@ public class AddressVO {
         this.lng = lng;
     }
 
-    public static AddressVO getDefault() {
-        AddressVO addressVO = new AddressVO();
-        addressVO.setId(55L);
-        addressVO.setUserid(136L);
-        addressVO.setAddress("九号楼");
-        addressVO.setTelephone("15620606954");
-        addressVO.setTruename("张三");
-        addressVO.setStatus(2);
-        addressVO.setZip_code("");
-        addressVO.setLastid(0);
-        addressVO.setProvince_id(1);
-        addressVO.setCity_id(37);
-        addressVO.setTown_id(567);
-        addressVO.setIsdefault(0);
-        addressVO.setDateline(new Date());
-        addressVO.setPct_address("北京市东城区东华门街道11号楼");
-        addressVO.setLat("39.918922");
-        addressVO.setLng("116.412224");
-        return addressVO;
+    public static ReceiptInfoVO getDefault() {
+        ReceiptInfoVO receiptInfoVO = new ReceiptInfoVO();
+        receiptInfoVO.setId(55L);
+        receiptInfoVO.setUserid(136L);
+        receiptInfoVO.setAddress("九号楼");
+        receiptInfoVO.setTelephone("15620606954");
+        receiptInfoVO.setTruename("张三");
+        receiptInfoVO.setStatus(2);
+        receiptInfoVO.setZip_code("");
+        receiptInfoVO.setLastid(0);
+        receiptInfoVO.setProvince_id(1);
+        receiptInfoVO.setCity_id(37);
+        receiptInfoVO.setTown_id(567);
+        receiptInfoVO.setIsdefault(0);
+        receiptInfoVO.setDateline(new Date());
+        receiptInfoVO.setPct_address("北京市东城区东华门街道11号楼");
+        receiptInfoVO.setLat("39.918922");
+        receiptInfoVO.setLng("116.412224");
+        return receiptInfoVO;
 
     }
 }
