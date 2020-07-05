@@ -1,6 +1,6 @@
 package com.io.hydralisk.vo;
 
-public class ItemVO {
+public class ItemInfoVO {
     private Integer buy_num;
     private Integer cart_amount;
     private Long catid;

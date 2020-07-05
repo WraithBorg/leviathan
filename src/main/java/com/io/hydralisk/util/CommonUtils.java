@@ -344,53 +344,7 @@ public class CommonUtils {
         return returnStr;
     }
 
-    /**
-     * 条形码补0
-     */
-    public static String getFillZero(String barCode) {
-        int length = barCode.length();
-        switch (length){
-            case 1:
-                barCode = "000000000000" + barCode;
-                break;
-            case 2:
-                barCode = "00000000000" + barCode;
-                break;
-            case 3:
-                barCode = "0000000000" + barCode;
-                break;
-            case 4:
-                barCode = "000000000" + barCode;
-                break;
-            case 5:
-                barCode = "00000000" + barCode;
-                break;
-            case 6:
-                barCode = "0000000" + barCode;
-                break;
-            case 7:
-                barCode = "000000" + barCode;
-                break;
-            case 8:
-                barCode = "00000" + barCode;
-                break;
-            case 9:
-                barCode = "0000" + barCode;
-                break;
-            case 10:
-                barCode = "000" + barCode;
-                break;
-            case 11:
-                barCode = "00" + barCode;
-                break;
-            case 12:
-                barCode = "0" + barCode;
-                break;
-            default:
-                break;
-        }
-        return barCode;
-    }
+
     /**
      * 校验手机验证码
      */
