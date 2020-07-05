@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 05/07/2020 18:16:45
+ Date: 05/07/2020 22:27:02
 */
 
 SET NAMES utf8mb4;
@@ -46,27 +46,53 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item`  (
   `id` int(0) NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `img_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `price` decimal(18, 4) NOT NULL,
   `weight` decimal(18, 4) NOT NULL COMMENT '重量',
   `category_id` int(0) NULL DEFAULT NULL COMMENT '类别',
   `buy_num` int(0) NULL DEFAULT NULL COMMENT '月销数量',
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '商品详情内容',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of item
 -- ----------------------------
-INSERT INTO `item` VALUES (159, '2017年寿眉-C01', 'attach/2020/04/17/58.jpg', 300.0000, 0.1000, 25, 3);
-INSERT INTO `item` VALUES (160, '2020白毫银针-A01', 'attach/2020/04/17/61.jpg', 1000.0000, 0.3500, 22, 0);
-INSERT INTO `item` VALUES (162, '2018年一级白牡丹', 'attach/2020/05/01/77.jpg', 1500.0000, 0.5000, 23, 123);
-INSERT INTO `item` VALUES (163, '2014年贡眉-A01', 'attach/2020/05/06/82.jpg', 3000.0000, 0.3000, 25, 3);
-INSERT INTO `item` VALUES (164, '2006年老寿眉-B01', 'attach/2020/05/06/83.jpg', 500.0000, 0.2000, 25, 6);
-INSERT INTO `item` VALUES (165, '2012老寿眉-A01', 'attach/2020/05/06/84.jpg', 400.0000, 0.6000, 25, 1);
-INSERT INTO `item` VALUES (166, '2018白毫银针-A02', 'attach/2020/05/06/85.jpg', 1000.0000, 0.5000, 22, 3);
-INSERT INTO `item` VALUES (167, '2018白牡丹散茶-B01', 'attach/2020/05/06/86.jpg', 300.0000, 0.5000, 23, 12);
-INSERT INTO `item` VALUES (168, '2018年牡丹王-A01', 'attach/2020/05/06/87.jpg', 600.0000, 0.3000, 23, 10);
-INSERT INTO `item` VALUES (169, '2019年白毫银针-A01', 'attach/2020/05/06/88.jpg', 900.0000, 0.3500, 22, 8);
+INSERT INTO `item` VALUES (159, '2017年寿眉-C01', 300.0000, 0.1000, 25, 3, NULL);
+INSERT INTO `item` VALUES (160, '2020白毫银针-A01', 1000.0000, 0.3500, 22, 0, NULL);
+INSERT INTO `item` VALUES (162, '2018年一级白牡丹', 1500.0000, 0.5000, 23, 123, NULL);
+INSERT INTO `item` VALUES (163, '2014年贡眉-A01', 3000.0000, 0.3000, 25, 3, NULL);
+INSERT INTO `item` VALUES (164, '2006年老寿眉-B01', 500.0000, 0.2000, 25, 6, NULL);
+INSERT INTO `item` VALUES (165, '2012老寿眉-A01', 400.0000, 0.6000, 25, 1, NULL);
+INSERT INTO `item` VALUES (166, '2018白毫银针-A02', 1000.0000, 0.5000, 22, 3, '<p>2018白毫银针-A02款 很实惠的一款白毫银针</p>');
+INSERT INTO `item` VALUES (167, '2018白牡丹散茶-B01', 300.0000, 0.5000, 23, 12, NULL);
+INSERT INTO `item` VALUES (168, '2018年牡丹王-A01', 600.0000, 0.3000, 23, 10, NULL);
+INSERT INTO `item` VALUES (169, '2019年白毫银针-A01', 900.0000, 0.3500, 22, 8, NULL);
+
+-- ----------------------------
+-- Table structure for item_img
+-- ----------------------------
+DROP TABLE IF EXISTS `item_img`;
+CREATE TABLE `item_img`  (
+  `id` int(0) NOT NULL,
+  `item_id` int(0) NULL DEFAULT NULL,
+  `default_flag` tinyint(0) NULL DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of item_img
+-- ----------------------------
+INSERT INTO `item_img` VALUES (1, 159, 1, 'attach/2020/04/17/58.jpg');
+INSERT INTO `item_img` VALUES (2, 160, 1, 'attach/2020/04/17/61.jpg');
+INSERT INTO `item_img` VALUES (3, 162, 1, 'attach/2020/05/01/77.jpg');
+INSERT INTO `item_img` VALUES (4, 163, 1, 'attach/2020/05/06/82.jpg');
+INSERT INTO `item_img` VALUES (5, 164, 1, 'attach/2020/05/06/83.jpg');
+INSERT INTO `item_img` VALUES (6, 165, 1, 'attach/2020/05/06/84.jpg');
+INSERT INTO `item_img` VALUES (7, 166, 1, 'attach/2020/05/06/85.jpg');
+INSERT INTO `item_img` VALUES (8, 167, 1, 'attach/2020/05/06/86.jpg');
+INSERT INTO `item_img` VALUES (9, 168, 1, 'attach/2020/05/06/87.jpg');
+INSERT INTO `item_img` VALUES (10, 169, 1, 'attach/2020/05/06/88.jpg');
 
 -- ----------------------------
 -- Table structure for receipt_info
