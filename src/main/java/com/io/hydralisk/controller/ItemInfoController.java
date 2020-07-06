@@ -154,4 +154,31 @@ public class ItemInfoController {
         Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + id);
         return rtnMap;
     }
+    /**
+     * 相似商品
+     */
+    @RequestMapping("/reclist")
+    public Object reclist(@RequestParam String productid) {
+        //
+        List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
+        List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
+        //
+        List<ItemInfo> itemInfos = itemInfoMapper.selectList(null);
+        itemInfos.forEach(m -> {
+            List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, m.getId(), ItemInfoImg.t.default_flag, "1"));
+            if (itemInfoImgs.size() > 0) {
+                m.setDefaultImg(itemInfoImgs.get(0).getUrl());
+            }
+        });
+        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
+        Map data = CCommonUtils.ofMapN(
+                "rscount", 11,
+                "per_page", 0,
+                "pagelist", false,
+                "catList", categoryVOS,
+                "list", list,
+                "url", "/module.php?m=b2c_product&a=default");
+        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + productid);
+        return dataMap;
+    }
 }
