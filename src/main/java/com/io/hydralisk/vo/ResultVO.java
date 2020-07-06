@@ -1,5 +1,8 @@
 package com.io.hydralisk.vo;
 
+/**
+ * 通用返回结果
+ */
 public class ResultVO {
     private int error;
     private String message;

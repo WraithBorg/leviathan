@@ -9,18 +9,18 @@ import java.math.BigDecimal;
 @TableName(value = "item_info")
 public class ItemInfo {
     @TableId
-    private Long id;
-    @TableField(value = "name")
+    private String id;
+    @TableField(value = t.name)
     private String name;
-    @TableField(value = "price")
+    @TableField(value = t.price)
     private BigDecimal price;
-    @TableField(value = "weight")
+    @TableField(value = t.weight)
     private BigDecimal weight;
-    @TableField(value = "category_id")
+    @TableField(value = t.category_id)
     private Long categoryId;
-    @TableField(value = "buy_num")
+    @TableField(value = t.buy_num)
     private Integer buyNum;
-    @TableField(value = "content")
+    @TableField(value = t.content)
     private String content;
 
 
@@ -39,11 +39,11 @@ public class ItemInfo {
         this.defaultImg = defaultImg;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -93,5 +93,16 @@ public class ItemInfo {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+
+
+    public static final class t {
+        public static final String name = "name";
+        public static final String price = "price";
+        public static final String weight = "weight";
+        public static final String category_id = "category_id";
+        public static final String buy_num = "buy_num";
+        public static final String content = "content";
     }
 }

@@ -7,19 +7,19 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName(value = "category_info")
 public class CategoryInfo {
     @TableId
-    private Long id;
-    @TableField(value = "name")
+    private String id;
+    @TableField(value = t.name)
     private String name;
-    @TableField(value = "pid")
-    private Long pid;
-    @TableField(value = "img_url")
+    @TableField(value = t.pid)
+    private String pid;
+    @TableField(value = t.img_url)
     private String imgUrl;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -31,11 +31,11 @@ public class CategoryInfo {
         this.name = name;
     }
 
-    public Long getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(Long pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 
@@ -45,5 +45,10 @@ public class CategoryInfo {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+    public final static class t {
+        public static final String name = "name";
+        public static final String pid = "pid";
+        public static final String img_url = "img_url";
     }
 }

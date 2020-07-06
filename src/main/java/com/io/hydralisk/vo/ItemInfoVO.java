@@ -1,5 +1,8 @@
 package com.io.hydralisk.vo;
 
+/**
+ * 商品详细信息
+ */
 public class ItemInfoVO {
     private Integer buy_num;
     private Integer cart_amount;
@@ -11,7 +14,7 @@ public class ItemInfoVO {
     private Integer ex_table_data_id;
     private Integer ex_table_id;
     private Integer fav_num;
-    private Long id;
+    private String id;
     private String imgsdata;
     private String imgurl;
     private Integer incart;
@@ -119,11 +122,11 @@ public class ItemInfoVO {
         this.fav_num = fav_num;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

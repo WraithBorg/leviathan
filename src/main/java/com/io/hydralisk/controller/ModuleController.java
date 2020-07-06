@@ -6,7 +6,7 @@ import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.NavDTO;
 import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.service.usb.UserInfoService;
-import com.io.hydralisk.util.CommonUtils;
+import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.UserInfoVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +32,8 @@ public class ModuleController {
     public Object b2c_user() {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserInfoVO userInfoVO = userInfoConvert.getUserVO(defaultUser);
-        Map data = CommonUtils.ofMap("data", userInfoVO, "navList", NavDTO.getNavList());
-        Map ofMap = CommonUtils.ofMap("error", 0, "message", "success", "data",data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_user/index");
+        Map data = CCommonUtils.ofMap("data", userInfoVO, "navList", NavDTO.getNavList());
+        Map ofMap = CCommonUtils.ofMap("error", 0, "message", "success", "data",data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_user/index");
         return ofMap;
     }
 

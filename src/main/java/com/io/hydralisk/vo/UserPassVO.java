@@ -1,5 +1,8 @@
 package com.io.hydralisk.vo;
 
+/**
+ * 用户信息 修改密码界面
+ */
 public class UserPassVO {
     private Integer gender;
     private Integer gold;
@@ -7,7 +10,7 @@ public class UserPassVO {
     private String money;
     private String nickname;
     private String user_head;
-    private Long userid;
+    private String userid;
     private String username;
 
     public Integer getGender() {
@@ -58,11 +61,11 @@ public class UserPassVO {
         this.user_head = user_head;
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

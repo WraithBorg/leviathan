@@ -7,20 +7,19 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName("item_img")
 public class ItemInfoImg {
     @TableId
-    private Long id;
-    @TableField(value = "item_id")
+    private String id;
+    @TableField(value = t.item_id)
     private Long itemId;
-    @TableField(value = "default_flag")
+    @TableField(value = t.default_flag)
     private Boolean defaultFlag;
-    @TableField(value = "url")
+    @TableField(value = t.url)
     private String url;
 
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -46,5 +45,10 @@ public class ItemInfoImg {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+    public static final class t{
+        public static final String item_id = "item_id";
+        public static final String default_flag = "default_flag";
+        public static final String url = "url";
     }
 }

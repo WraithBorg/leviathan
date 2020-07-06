@@ -7,25 +7,25 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("receipt_info")
 public class ReceiptInfo {
-    @TableId(type = IdType.AUTO)
-    private Long id;
-    @TableField(value = "user_id")
-    private Long userId;
-    @TableField(value = "address")
+    @TableId(type = IdType.ASSIGN_UUID)
+    private String id;
+    @TableField(value = t.user_id)
+    private String userId;
+    @TableField(value = t.address)
     private String address;
-    @TableField(value = "zip_code")
+    @TableField(value = t.zip_code)
     private String zipCode;
-    @TableField(value = "true_name")
+    @TableField(value = t.true_name)
     private String trueName;
-    @TableField(value = "telephone")
+    @TableField(value = t.telephone)
     private String telephone;
-    @TableField(value = "province_id")
+    @TableField(value = t.province_id)
     private Integer provinceId;
-    @TableField(value = "city_id")
+    @TableField(value = t.city_id)
     private Integer cityId;
-    @TableField(value = "town_id")
+    @TableField(value = t.town_id)
     private Integer townId;
-    @TableField(value = "default_flag")
+    @TableField(value = t.default_flag)
     private Integer defaultFlag;
 
     public Integer getProvinceId() {
@@ -60,19 +60,19 @@ public class ReceiptInfo {
         this.defaultFlag = defaultFlag;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -105,6 +105,21 @@ public class ReceiptInfo {
     }
 
     public void setTelephone(String telephone) {
+
         this.telephone = telephone;
     }
+    public static final class t {
+        public static final String user_id = "user_id";
+        public static final String address = "address";
+        public static final String zip_code = "zip_code";
+        public static final String true_name = "true_name";
+        public static final String telephone = "telephone";
+        public static final String province_id = "province_id";
+        public static final String city_id = "city_id";
+        public static final String town_id = "town_id";
+        public static final String default_flag = "default_flag";
+
+
+    }
+
 }

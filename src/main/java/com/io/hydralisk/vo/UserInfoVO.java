@@ -18,7 +18,7 @@ public class UserInfoVO {
     private String telephone;
     private String  user_head;
     private Integer user_type;
-    private Long userid;
+    private String userid;
     private String username;
 
     public String getBirthday() {
@@ -149,11 +149,11 @@ public class UserInfoVO {
         this.user_type = user_type;
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

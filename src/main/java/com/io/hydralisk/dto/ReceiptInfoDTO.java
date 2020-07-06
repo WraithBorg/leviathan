@@ -1,7 +1,7 @@
 package com.io.hydralisk.dto;
 
 public class ReceiptInfoDTO {
-    private Long id;
+    private String id;
     private String truename;
     private String  telephone;
     private String  province_id;
@@ -9,11 +9,11 @@ public class ReceiptInfoDTO {
     private String   town_id;
     private String  address;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

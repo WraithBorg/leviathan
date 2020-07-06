@@ -17,8 +17,8 @@ public class ReceiptInfoConvert {
         return receiptInfoVOS;
     }
     public ReceiptInfoVO getReceiptVO(ReceiptInfo receiptInfo){
-        Long id = receiptInfo.getId();
-        Long userId = receiptInfo.getUserId();
+        String id = receiptInfo.getId();
+        String userId = receiptInfo.getUserId();
         String address = receiptInfo.getAddress();
         String telephone = receiptInfo.getTelephone();
         String trueName = receiptInfo.getTrueName();
@@ -49,7 +49,7 @@ public class ReceiptInfoConvert {
     }
 
     public ReceiptInfo getReceiptInfo(ReceiptInfoDTO dto) {
-        Long id = dto.getId();
+        String id = dto.getId();
         String address = dto.getAddress();
         String provinceId = dto.getProvince_id();
         String cityId = dto.getCity_id();

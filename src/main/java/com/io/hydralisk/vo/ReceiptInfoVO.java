@@ -4,9 +4,12 @@ import com.io.hydralisk.constant.CConstant;
 
 import java.util.Date;
 
+/**
+ * 收货地址
+ */
 public class ReceiptInfoVO {
-    private Long id;
-    private Long userid;
+    private String id;
+    private String userid;
     private String address;
     private String telephone;
     private String truename;
@@ -22,19 +25,19 @@ public class ReceiptInfoVO {
     private String lat;
     private String lng;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
@@ -152,8 +155,8 @@ public class ReceiptInfoVO {
 
     public static ReceiptInfoVO getDefault() {
         ReceiptInfoVO receiptInfoVO = new ReceiptInfoVO();
-        receiptInfoVO.setId(55L);
-        receiptInfoVO.setUserid(136L);
+        receiptInfoVO.setId("55");
+        receiptInfoVO.setUserid("136");
         receiptInfoVO.setAddress("九号楼");
         receiptInfoVO.setTelephone(CConstant.DEFAULT_TELEPHONE);
         receiptInfoVO.setTruename("张三");

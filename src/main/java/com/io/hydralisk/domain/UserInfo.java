@@ -7,13 +7,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("user_info")
 public class UserInfo {
-    @TableId(type = IdType.AUTO)
-    private Long id;
-    @TableField(value = "nickname")
+    @TableId(type = IdType.ASSIGN_UUID)
+    private String id;
+    @TableField(value = t.nickname)
     private String nickName;
-    @TableField(value = "telephone")
+    @TableField(value = t.telephone)
     private String telePhone;
-    @TableField(value = "password")
+    @TableField(value = t.password)
     private String password;
 
     public String getPassword() {
@@ -24,11 +24,11 @@ public class UserInfo {
         this.password = password;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,6 +45,13 @@ public class UserInfo {
     }
 
     public void setTelePhone(String telePhone) {
+
         this.telePhone = telePhone;
+    }
+    public static final class t{
+        public static final String nickname = "nickname";
+        public static final String telephone = "telephone";
+        public static final String password = "password";
+
     }
 }

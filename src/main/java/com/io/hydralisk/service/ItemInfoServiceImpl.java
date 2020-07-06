@@ -5,7 +5,7 @@ import com.io.hydralisk.domain.ItemInfoImg;
 import com.io.hydralisk.mapper.ItemInfoImgMapper;
 import com.io.hydralisk.mapper.ItemInfoMapper;
 import com.io.hydralisk.service.usb.ItemInfoService;
-import com.io.hydralisk.util.CommonUtils;
+import com.io.hydralisk.util.CCommonUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,7 +26,7 @@ public class ItemInfoServiceImpl implements ItemInfoService {
     @Override
     public ItemInfo getItemWithImg(String id) {
         ItemInfo itemInfo = itemInfoMapper.selectById(id);
-        List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CommonUtils.ofMap("item_id", id));
+        List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, id));
         if (itemInfoImgs.size() > 0) {
             itemInfo.setDefaultImg(itemInfoImgs.get(0).getUrl());
         }

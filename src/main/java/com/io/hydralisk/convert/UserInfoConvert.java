@@ -2,7 +2,7 @@ package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.domain.UserInfo;
-import com.io.hydralisk.util.CommonUtils;
+import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.UserInfoVO;
 import com.io.hydralisk.vo.UserPassVO;
 import org.springframework.stereotype.Component;
@@ -15,8 +15,8 @@ public class UserInfoConvert {
 
     public UserInfoVO getUserVO(UserInfo userInfo) {
         UserInfoVO vo = new UserInfoVO();
-        vo.setBirthday(CommonUtils.formatDate(new Date()));
-        vo.setCreatetime(CommonUtils.formatDate(new Date()));
+        vo.setBirthday(CCommonUtils.formatDate(new Date()));
+        vo.setCreatetime(CCommonUtils.formatDate(new Date()));
         vo.setFollow_num(0);
         vo.setFollowed_num(0);
         vo.setGender(0);
@@ -24,7 +24,7 @@ public class UserInfoConvert {
         vo.setGrade(0);
         vo.setInvite_userid(0L);
         vo.setIs_auth(0);
-        vo.setLasttime(CommonUtils.formatDate(new Date()));
+        vo.setLasttime(CCommonUtils.formatDate(new Date()));
         vo.setMoney("0.00");
         vo.setNickname(userInfo.getNickName());
         vo.setStatus(10);

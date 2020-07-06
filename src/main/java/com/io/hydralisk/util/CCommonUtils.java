@@ -13,12 +13,14 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class CommonUtils {
-    private static final Logger logger = LoggerFactory.getLogger(CommonUtils.class);
+/**
+ * 自定义工具类
+ */
+public class CCommonUtils {
+    private static final Logger logger = LoggerFactory.getLogger(CCommonUtils.class);
 
-    private CommonUtils() {
+    private CCommonUtils() {
 
     }
 

@@ -2,36 +2,59 @@ package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.domain.ItemInfo;
-import com.io.hydralisk.util.CommonDateUtil;
-import com.io.hydralisk.util.CommonUtils;
+import com.io.hydralisk.domain.ShopCartItemInfo;
+import com.io.hydralisk.domain.UserInfo;
+import com.io.hydralisk.mapper.ShopCartItemMapper;
+import com.io.hydralisk.service.usb.UserInfoService;
+import com.io.hydralisk.util.DDateUtil;
+import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.DDecimalUtil;
 import com.io.hydralisk.vo.ItemInfoVO;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 商品信息
+ */
 @Component
 public class ItemInfoConvert {
+    @Resource
+    private ShopCartItemMapper shopCartItemMapper;
+    @Resource
+    private UserInfoService userInfoService;
+
     public List<ItemInfoVO> getItemInfoVOS(List<ItemInfo> itemInfos) {
         List<ItemInfoVO> itemInfoVOS = itemInfos.stream().map(m -> getItemInfoVO(m)).collect(Collectors.toList());
         return itemInfoVOS;
     }
 
     public ItemInfoVO getItemInfoVO(ItemInfo itemInfo) {
+        UserInfo defaultUser = userInfoService.getDefaultUser();
+        ShopCartItemInfo cartItemInfo = shopCartItemMapper.getByUserItem(itemInfo.getId(), defaultUser.getId());
+        Integer cartAmount;
+        if (cartItemInfo == null){
+            cartAmount = 0;
+        }else {
+            cartAmount = DDecimalUtil.toInt(cartItemInfo.getAmount());
+        }
+        //
         ItemInfoVO itemInfoVO = new ItemInfoVO();
         itemInfoVO.setBuy_num(itemInfo.getBuyNum());
-        itemInfoVO.setCart_amount(0);//TODO 购物车内数量
+        itemInfoVO.setCart_amount(cartAmount);
         itemInfoVO.setCatid(itemInfo.getCategoryId());
-        itemInfoVO.setCreatetime(CommonDateUtil.getDateFormat().format(new Date()));
+        itemInfoVO.setCreatetime(DDateUtil.format(new Date()));
         itemInfoVO.setDescription(itemInfo.getName());
         itemInfoVO.setId(itemInfo.getId());
         itemInfoVO.setImgsdata(itemInfo.getDefaultImg());
-        if (CommonUtils.isNotBlank(itemInfo.getDefaultImg())){
-            itemInfoVO.setImgurl(CConstant.IMAGE_HOST+itemInfo.getDefaultImg());
+        if (CCommonUtils.isNotBlank(itemInfo.getDefaultImg())) {
+            itemInfoVO.setImgurl(CConstant.IMAGE_HOST + itemInfo.getDefaultImg());
         }
 
-        itemInfoVO.setIncart(0);//TODO 是否在购物车中
+        itemInfoVO.setIncart(cartAmount > 0 ? 1 : 0);
         itemInfoVO.setPrice(itemInfo.getPrice().toEngineeringString());
         itemInfoVO.setTitle(itemInfo.getName());
         itemInfoVO.setWeight(itemInfo.getWeight().toEngineeringString());
@@ -57,7 +80,7 @@ public class ItemInfoConvert {
         itemInfoVO.setStatus(1);
         itemInfoVO.setStime(0);
         itemInfoVO.setTotal_num(99);
-        itemInfoVO.setUpdatetime(CommonDateUtil.getDateFormat().format(new Date()));
+        itemInfoVO.setUpdatetime(DDateUtil.format(new Date()));
         itemInfoVO.setVideourl("");
         itemInfoVO.setView_num(550);
 

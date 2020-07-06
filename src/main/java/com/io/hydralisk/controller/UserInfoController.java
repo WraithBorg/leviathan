@@ -5,9 +5,11 @@ import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.ModifyPassDTO;
 import com.io.hydralisk.dto.UserInfoDTO;
+import com.io.hydralisk.mapper.ItemInfoImgMapper;
+import com.io.hydralisk.mapper.ItemInfoMapper;
 import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.service.usb.UserInfoService;
-import com.io.hydralisk.util.CommonUtils;
+import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.ResultVO;
 import com.io.hydralisk.vo.UserInfoVO;
 import com.io.hydralisk.vo.UserPassVO;
@@ -30,6 +32,8 @@ public class UserInfoController {
     @Resource
     private UserInfoConvert userInfoConvert;
 
+
+
     /**
      * @Range 用户设置
      */
@@ -37,7 +41,7 @@ public class UserInfoController {
     public Object set() {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserInfoVO userInfoVO = userInfoConvert.getUserVO(defaultUser);
-        Map data = CommonUtils.ofMap("data", userInfoVO);
+        Map data = CCommonUtils.ofMap("data", userInfoVO);
         return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/set");
     }
 
@@ -50,7 +54,7 @@ public class UserInfoController {
     public Object info() {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserInfoVO userInfoVO = userInfoConvert.getUserVO(defaultUser);
-        Map data = CommonUtils.ofMap("data", userInfoVO);
+        Map data = CCommonUtils.ofMap("data", userInfoVO);
         return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/info");
     }
 
@@ -75,7 +79,7 @@ public class UserInfoController {
     public Object password() {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
-        Map data = CommonUtils.ofMap("data", userPassVO);
+        Map data = CCommonUtils.ofMap("data", userPassVO);
         return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/password");
     }
 
@@ -97,7 +101,7 @@ public class UserInfoController {
         defaultUser.setPassword(modifyPassDTO.getPassword());
         userInfoMapper.updateById(defaultUser);
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
-        Map data = CommonUtils.ofMap("data", userPassVO);
+        Map data = CCommonUtils.ofMap("data", userPassVO);
         return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/password");
     }
 
