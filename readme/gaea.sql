@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本地连接
+ Source Server         : 本机
  Source Server Type    : MySQL
- Source Server Version : 50726
+ Source Server Version : 80020
  Source Host           : localhost:3306
  Source Schema         : gaea
 
  Target Server Type    : MySQL
- Target Server Version : 50726
+ Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 06/07/2020 17:44:02
+ Date: 06/07/2020 22:36:08
 */
 
 SET NAMES utf8mb4;
@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `category_info`;
 CREATE TABLE `category_info`  (
   `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `pid` int(11) NULL DEFAULT NULL COMMENT '父类',
+  `pid` int(0) NULL DEFAULT NULL COMMENT '父类',
   `img_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -45,8 +45,8 @@ INSERT INTO `category_info` VALUES ('27', '福鼎小吃', 0, NULL);
 DROP TABLE IF EXISTS `item_img`;
 CREATE TABLE `item_img`  (
   `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `item_id` int(11) NULL DEFAULT NULL,
-  `default_flag` tinyint(4) NULL DEFAULT NULL,
+  `item_id` int(0) NULL DEFAULT NULL,
+  `default_flag` tinyint(0) NULL DEFAULT NULL,
   `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -74,8 +74,8 @@ CREATE TABLE `item_info`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `price` decimal(18, 4) NOT NULL,
   `weight` decimal(18, 4) NOT NULL COMMENT '重量',
-  `category_id` int(11) NULL DEFAULT NULL COMMENT '类别',
-  `buy_num` int(11) NULL DEFAULT NULL COMMENT '月销数量',
+  `category_id` int(0) NULL DEFAULT NULL COMMENT '类别',
+  `buy_num` int(0) NULL DEFAULT NULL COMMENT '月销数量',
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品详情内容',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -100,15 +100,15 @@ INSERT INTO `item_info` VALUES ('169', '2019年白毫银针-A01', 900.0000, 0.35
 DROP TABLE IF EXISTS `receipt_info`;
 CREATE TABLE `receipt_info`  (
   `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(0) NOT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `telephone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `true_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `zip_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
-  `default_flag` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
-  `province_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `city_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `town_id` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `default_flag` tinyint(0) UNSIGNED NOT NULL DEFAULT 0,
+  `province_id` int(0) UNSIGNED NOT NULL DEFAULT 0,
+  `city_id` int(0) UNSIGNED NOT NULL DEFAULT 0,
+  `town_id` int(0) UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -124,12 +124,12 @@ INSERT INTO `receipt_info` VALUES ('ec1ef77a92225398d9c5cc45a98bfdc8', 3, '19号
 DROP TABLE IF EXISTS `shop_cart_item`;
 CREATE TABLE `shop_cart_item`  (
   `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `user_id` int(11) NULL DEFAULT NULL COMMENT '用户主键',
+  `user_id` int(0) NULL DEFAULT NULL COMMENT '用户主键',
   `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '购物车数量',
   `price` decimal(10, 2) NULL DEFAULT NULL COMMENT '加购价格',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '加购时间',
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品加购名称',
-  `item_id` int(11) NULL DEFAULT NULL COMMENT '商品主键',
+  `item_id` int(0) NULL DEFAULT NULL COMMENT '商品主键',
   `item_img_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品图片',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -148,12 +148,13 @@ CREATE TABLE `user_info`  (
   `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '昵称',
   `telephone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '手机号',
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
+  `head_img_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('3', 'ssaabbb', '110', 'ss');
+INSERT INTO `user_info` VALUES ('3', 'ssaabbb', '110', 'ss', '4c62b4bd-03db-49e7-8931-53c847cc04c9u=1354268575,1268995723&fm=26&gp=0.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

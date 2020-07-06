@@ -15,7 +15,7 @@ public class NavUserDTO {
     private Integer user_type = 1;
     private Integer status = 10;
     private Integer is_auth = 0;
-    private String user_head = CConstant.DEFAULT_HEAD_IMG;
+    private String user_head;
     private Integer follow_num = 0;
     private Integer followed_num = 0;
     private Integer gender = 0;

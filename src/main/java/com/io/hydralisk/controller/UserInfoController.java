@@ -13,18 +13,22 @@ import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.ResultVO;
 import com.io.hydralisk.vo.UserInfoVO;
 import com.io.hydralisk.vo.UserPassVO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 @RequestMapping("/user")
 @RestController
 public class UserInfoController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     @Resource
     private UserInfoService userInfoService;
     @Resource
@@ -69,6 +73,20 @@ public class UserInfoController {
 
         return new ResultVO(new ArrayList<>(), CConstant.WEB_HOST + "/h5/pages/user/info");
     }
+
+    /**
+     * 获取用户资料
+     *
+     * @Range 获取用户头像
+     */
+    @GetMapping("/user_head")
+    public Object user_head() {
+        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
+        Map data = CCommonUtils.ofMap("data", userPassVO);
+        return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/password");
+    }
+
 
     /**
      * 获取用户资料
