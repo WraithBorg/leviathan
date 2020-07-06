@@ -9,6 +9,7 @@ import com.io.hydralisk.domain.ItemInfoImg;
 import com.io.hydralisk.mapper.CategoryInfoMapper;
 import com.io.hydralisk.mapper.ItemInfoImgMapper;
 import com.io.hydralisk.mapper.ItemInfoMapper;
+import com.io.hydralisk.service.usb.ItemInfoService;
 import com.io.hydralisk.util.CommonUtils;
 import com.io.hydralisk.vo.CategoryVO;
 import com.io.hydralisk.vo.ItemInfoVO;
@@ -28,7 +29,7 @@ public class ItemInfoController {
     @Resource
     private ItemInfoMapper itemInfoMapper;
     @Resource
-    private CategoryInfoMapper  categoryInfoMapper;
+    private CategoryInfoMapper categoryInfoMapper;
     @Resource
     private ItemInfoConvert itemInfoConvert;
     @Resource
@@ -37,40 +38,43 @@ public class ItemInfoController {
     private CategoryInfoConvert categoryInfoConvert;
     @Resource
     private ItemInfoImgMapper itemInfoImgMapper;
+    @Resource
+    private ItemInfoService infoService;
+
     /**
      * 商品列表
      */
     @RequestMapping("/list")
     public Object list(@RequestParam(required = false) String orderby,
                        @RequestParam(required = false) String catid) {
-        List<ItemInfo> itemInfos  ;
+        List<ItemInfo> itemInfos;
 
         // category
         Map catMap = null;
-        if (CommonUtils.isNotBlank(catid)){
+        if (CommonUtils.isNotBlank(catid)) {
             CategoryInfo catDB = categoryInfoMapper.selectById(catid);
             catMap = CommonUtils.ofMap("catid", catDB.getId(), "pid", catDB.getPid(), "title", catDB.getName());
             itemInfos = itemInfoMapper.selectByMap(CommonUtils.ofMap("category_id", catid));
-        }else {
+        } else {
             itemInfos = itemInfoMapper.selectList(null);
         }
         itemInfos.forEach(m -> {
             List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CommonUtils.ofMap("item_id", m.getId(), "default_flag", "1"));
-            if (itemInfoImgs.size() > 0){
+            if (itemInfoImgs.size() > 0) {
                 m.setDefaultImg(itemInfoImgs.get(0).getUrl());
             }
         });
         List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
 
         // category
-        Map  data = CommonUtils.ofMapN(
+        Map data = CommonUtils.ofMapN(
                 "cat", catMap,
-                "catList","",
-                "list",list,
-                "pagelist",false,
-                "per_page",0,
-                "rscount",3,
-                "url","/module.php?m=b2c_product&a=list");
+                "catList", "",
+                "list", list,
+                "pagelist", false,
+                "per_page", 0,
+                "rscount", 3,
+                "url", "/module.php?m=b2c_product&a=list");
         Map<String, Object> rtnMap = CommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", "http://localhost:8081/h5/pageb2c/b2c_product/list?catid=" + catid);
         return rtnMap;
     }
@@ -87,7 +91,7 @@ public class ItemInfoController {
         List<ItemInfo> itemInfos = itemInfoMapper.selectList(null);
         itemInfos.forEach(m -> {
             List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CommonUtils.ofMap("item_id", m.getId(), "default_flag", "1"));
-            if (itemInfoImgs.size() > 0){
+            if (itemInfoImgs.size() > 0) {
                 m.setDefaultImg(itemInfoImgs.get(0).getUrl());
             }
         });
@@ -102,20 +106,27 @@ public class ItemInfoController {
         Map dataMap = CommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", "http://localhost:8081/h5/pageb2c/b2c_product/show?id=" + productid);
         return dataMap;
     }
+
     /**
      * 显示商品
      */
     @RequestMapping("/show")
-    public Object show(@RequestParam String id,@RequestParam String orderid) {
-        ItemInfo itemInfo = itemInfoMapper.selectById(id);
+    public Object show(@RequestParam String id, @RequestParam String orderid) {
+
+        ItemInfo itemInfo = infoService.getItemWithImg(id);
         ItemInfoVO itemInfoVO = itemInfoConvert.getItemInfoVO(itemInfo);
+
         List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CommonUtils.ofMap("item_id", id));
         List<String> imgsdata = itemInfoImgs.stream().map(m -> {
             if (CommonUtils.isBlank(m.getUrl())) {
                 return null;
             }
-            return CConstant.IMAGE_HOST + m.getUrl();
+            String defautlImg = CConstant.IMAGE_HOST + m.getUrl();
+
+            return defautlImg;
         }).collect(Collectors.toList());
+
+
         Map dataMap = CommonUtils.ofMapN(
                 "cart_amount", 11,
                 "data", itemInfoVO,
@@ -129,17 +140,18 @@ public class ItemInfoController {
                 "pts", false,
                 "pts_num", 0,
                 "sharePic", "https://kfbc.deitui.com//index.php?m=gd&a=ShareProduct&imgurl=https://kfbc-deitui-com.oss-cn-hangzhou.aliyuncs.com/attach/2020/04/17/61.jpg&title=2020%E7%99%BD%E6%AF%AB%E9%93%B6%E9%92%88-A01&price=1000.00&url=https%3A%2F%2Fkfbc.deitui.com%2F%2Fmodule.php%3Fm%3Db2c_product%26a%3Dshow%26id%3D160"
-                 );
-        Map rtnMap = CommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", "http://localhost:8080/h5/pageb2c/b2c_product/show?id=" + id);
+        );
+        Map rtnMap = CommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + id);
         return rtnMap;
     }
+
     /**
      * Raty
      */
     @RequestMapping("/raty")
-    public Object raty(@RequestParam String id,@RequestParam String limit) {
-        Map dataMap = CommonUtils.ofMapN("list",new ArrayList<>(),"productid",id,"rscount",0);
-        Map rtnMap = CommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", "http://localhost:8080/h5/pageb2c/b2c_product/show?id=" + id);
+    public Object raty(@RequestParam String id, @RequestParam String limit) {
+        Map dataMap = CommonUtils.ofMapN("list", new ArrayList<>(), "productid", id, "rscount", 0);
+        Map rtnMap = CommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + id);
         return rtnMap;
     }
 }

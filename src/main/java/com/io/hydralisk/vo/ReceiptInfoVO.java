@@ -1,5 +1,7 @@
 package com.io.hydralisk.vo;
 
+import com.io.hydralisk.constant.CConstant;
+
 import java.util.Date;
 
 public class ReceiptInfoVO {
@@ -153,7 +155,7 @@ public class ReceiptInfoVO {
         receiptInfoVO.setId(55L);
         receiptInfoVO.setUserid(136L);
         receiptInfoVO.setAddress("九号楼");
-        receiptInfoVO.setTelephone("15620606954");
+        receiptInfoVO.setTelephone(CConstant.DEFAULT_TELEPHONE);
         receiptInfoVO.setTruename("张三");
         receiptInfoVO.setStatus(2);
         receiptInfoVO.setZip_code("");

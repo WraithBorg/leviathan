@@ -1,5 +1,6 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.util.CommonUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,7 @@ public class HtmlController {
                 "title", "关于我们",
                 "type_id", 1, "word", "关于我们");
         Map dataMap = CommonUtils.ofMap("data", data);
-        Map ofMap = CommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", "http://localhost:8080/h5/pages/html/aboutus");
+        Map ofMap = CommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST+"/h5/pages/html/aboutus");
         return ofMap;
     }
 }

@@ -1,9 +1,11 @@
 package com.io.hydralisk.dto;
 
+import com.io.hydralisk.constant.CConstant;
+
 public class NavUserDTO {
     private Long userid = 136L;
     private String username = "zxu";
-    private String telephone = "15620606954";
+    private String telephone = CConstant.DEFAULT_TELEPHONE;
     private String nickname = "zxu";
     private String money = "0.00";
     private Integer gold = 0;
@@ -13,7 +15,7 @@ public class NavUserDTO {
     private Integer user_type = 1;
     private Integer status = 10;
     private Integer is_auth = 0;
-    private String user_head = "https://kfbc-deitui-com.oss-cn-hangzhou.aliyuncs.com//static/images/user_head.jpg";
+    private String user_head = CConstant.DEFAULT_HEAD_IMG;
     private Integer follow_num = 0;
     private Integer followed_num = 0;
     private Integer gender = 0;

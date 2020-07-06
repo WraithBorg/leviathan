@@ -3,6 +3,7 @@ package com.io.hydralisk.service;
 import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.domain.ReceiptInfo;
 import com.io.hydralisk.mapper.ReceiptInfoMapper;
+import com.io.hydralisk.service.usb.ReceiptInfoService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
