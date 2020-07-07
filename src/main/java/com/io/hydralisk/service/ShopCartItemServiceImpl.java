@@ -1,4 +1,4 @@
-package com.io.hydralisk.service.usb;
+package com.io.hydralisk.service;
 
 import com.io.hydralisk.domain.ItemInfo;
 import com.io.hydralisk.domain.ItemInfoImg;
@@ -6,6 +6,7 @@ import com.io.hydralisk.domain.ShopCartItemInfo;
 import com.io.hydralisk.mapper.ItemInfoImgMapper;
 import com.io.hydralisk.mapper.ItemInfoMapper;
 import com.io.hydralisk.mapper.ShopCartItemMapper;
+import com.io.hydralisk.service.usb.ShopCartItemService;
 import com.io.hydralisk.util.CCommonUtils;
 import org.springframework.stereotype.Service;
 
