@@ -6,10 +6,10 @@ import com.io.hydralisk.convert.ItemInfoConvert;
 import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.domain.ItemInfo;
 import com.io.hydralisk.domain.ItemInfoImg;
-import com.io.hydralisk.mapper.CategoryInfoMapper;
-import com.io.hydralisk.mapper.ItemInfoImgMapper;
-import com.io.hydralisk.mapper.ItemInfoMapper;
+import com.io.hydralisk.domain.UserInfo;
+import com.io.hydralisk.mapper.*;
 import com.io.hydralisk.service.usb.ItemInfoService;
+import com.io.hydralisk.service.usb.UserFavItemService;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.CategoryVO;
 import com.io.hydralisk.vo.ItemInfoVO;
@@ -40,7 +40,10 @@ public class ItemInfoController {
     private ItemInfoImgMapper itemInfoImgMapper;
     @Resource
     private ItemInfoService infoService;
-
+    @Resource
+    private UserFavItemService userFavInfoService;
+    @Resource
+    private UserInfoMapper userInfoMapper;
     /**
      * 商品列表
      */
@@ -125,6 +128,9 @@ public class ItemInfoController {
 
             return defautlImg;
         }).collect(Collectors.toList());
+        // 查看是否该商品是否在收藏夹里
+        UserInfo defaultUser = userInfoMapper.getDefaultUser();
+        Integer hasFav = userFavInfoService.hasFav(defaultUser.getId(), itemInfo.getId());
 
 
         Map dataMap = CCommonUtils.ofMapN(
@@ -132,7 +138,7 @@ public class ItemInfoController {
                 "data", itemInfoVO,
                 "fieldsList", null,
                 "imgsdata", imgsdata,
-                "isfav", 0,
+                "isfav", hasFav,//收藏
                 "ksList", new ArrayList<>(),
                 "ksList2", null,
                 "ksid", 0,

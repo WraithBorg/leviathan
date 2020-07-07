@@ -8,12 +8,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+/**
+ * 跨域全局解决方案
+ */
 @Configuration
 public class CorsConfig {
-    /**
-     * 跨域全局解决方案
-     */
+
     @Bean
     public CorsFilter corsFilter() {
         // 1.添加CORS配置信息

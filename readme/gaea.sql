@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-07-07 10:14:03
+Date: 2020-07-07 10:56:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -155,6 +155,23 @@ CREATE TABLE `shop_cart_item` (
 -- Records of shop_cart_item
 -- ----------------------------
 INSERT INTO `shop_cart_item` VALUES ('35bee208c058aea7ad9b0e5b31de33c7', '3', '5.00', '3000.00', '2020-07-06 17:43:05', '2014年贡眉-A01', '163', 'attach/2020/05/06/82.jpg');
+INSERT INTO `shop_cart_item` VALUES ('a01fb27b61f744306043ac8d197491e0', '3', '2.00', '1000.00', '2020-07-07 10:17:43', '2020白毫银针-A01', '160', 'attach/2020/04/17/61.jpg');
+
+-- ----------------------------
+-- Table structure for user_fav_item
+-- ----------------------------
+DROP TABLE IF EXISTS `user_fav_item`;
+CREATE TABLE `user_fav_item` (
+  `id` varchar(40) NOT NULL,
+  `user_id` varchar(40) DEFAULT NULL,
+  `item_id` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of user_fav_item
+-- ----------------------------
+INSERT INTO `user_fav_item` VALUES ('1280334566847729666', '3', '160');
 
 -- ----------------------------
 -- Table structure for user_info
