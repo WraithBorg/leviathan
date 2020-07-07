@@ -4,6 +4,7 @@ import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.ModifyPassDTO;
+import com.io.hydralisk.dto.PayPwdDTO;
 import com.io.hydralisk.dto.UserInfoDTO;
 import com.io.hydralisk.mapper.ItemInfoImgMapper;
 import com.io.hydralisk.mapper.ItemInfoMapper;
@@ -35,7 +36,6 @@ public class UserInfoController {
     private UserInfoMapper userInfoMapper;
     @Resource
     private UserInfoConvert userInfoConvert;
-
 
 
     /**
@@ -107,13 +107,13 @@ public class UserInfoController {
     @PostMapping("/passwordsave")
     public Object passwordsave(ModifyPassDTO modifyPassDTO) {
         // validate
-        if (!modifyPassDTO.getPassword().equals(modifyPassDTO.getPassword2())){
-            return new ResultVO(1, "新密码输入不一致",new ArrayList<>(),CConstant.WEB_HOST + "/h5/pages/user/password");
+        if (!modifyPassDTO.getPassword().equals(modifyPassDTO.getPassword2())) {
+            return new ResultVO(1, "新密码输入不一致", new ArrayList<>(), CConstant.WEB_HOST + "/h5/pages/user/password");
         }
 
         UserInfo defaultUser = userInfoService.getDefaultUser();
-        if (!defaultUser.getPassword().equals(modifyPassDTO.getOldpassword())){
-            return new ResultVO(1, "旧密码出错",new ArrayList<>(),CConstant.WEB_HOST + "/h5/pages/user/password");
+        if (!defaultUser.getPassword().equals(modifyPassDTO.getOldpassword())) {
+            return new ResultVO(1, "旧密码出错", new ArrayList<>(), CConstant.WEB_HOST + "/h5/pages/user/password");
         }
         // save
         defaultUser.setPassword(modifyPassDTO.getPassword());
@@ -121,6 +121,32 @@ public class UserInfoController {
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userPassVO);
         return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/password");
+    }
+
+    /**
+     * 获取用户资料
+     *
+     * @Range 支付密码
+     */
+    @GetMapping("/paypwd")
+    public Object paypwd() {
+        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
+        Map data = CCommonUtils.ofMap("data", userPassVO);
+        return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/paypwd");
+    }
+    /**
+     * 获取修改支付密码
+     */
+    @PostMapping("/savepaypwd")
+    public Object savePayPwd(PayPwdDTO payPwdDTO){
+        UserInfo defaultUser = userInfoMapper.getDefaultUser();
+        if(!defaultUser.getPassword().equals(payPwdDTO.getPassword())){
+            return new ResultVO(1,"登录密码出错",new ArrayList<>(), CConstant.WEB_HOST + "/h5/pages/user/paypwd");
+        }
+        defaultUser.setPayPwd(payPwdDTO.getPaypwd());
+        userInfoMapper.updateById(defaultUser);
+        return new ResultVO(new ArrayList<>(), CConstant.WEB_HOST + "/h5/pages/user/paypwd");
     }
 
 }

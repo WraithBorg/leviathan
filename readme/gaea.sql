@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-07-07 09:58:38
+Date: 2020-07-07 10:14:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -166,10 +166,11 @@ CREATE TABLE `user_info` (
   `telephone` varchar(255) NOT NULL DEFAULT '' COMMENT '手机号',
   `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
   `head_img_url` varchar(255) DEFAULT NULL COMMENT '头像',
+  `paypwd` varchar(255) DEFAULT NULL COMMENT '支付密码',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('3', 'ssaabbb', '110', 'ss', '099b05b8-c433-4374-9a92-e87f5540fc2e下载.jpg');
+INSERT INTO `user_info` VALUES ('3', 'ssaab', '110', 'ss', '099b05b8-c433-4374-9a92-e87f5540fc2e下载.jpg', 'aaaaa');

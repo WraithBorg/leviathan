@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.io.hydralisk.constant.CConstant;
 
 @TableName("user_info")
 public class UserInfo {
@@ -18,6 +17,8 @@ public class UserInfo {
     private String password;
     @TableField(value = t.head_img_url)
     private String headImgUrl;
+    @TableField(value = t.paypwd)
+    private String payPwd;
 
     public String getPassword() {
         return password;
@@ -60,11 +61,20 @@ public class UserInfo {
         this.headImgUrl = headImgUrl;
     }
 
-    public static final class t{
+    public String getPayPwd() {
+        return payPwd;
+    }
+
+    public void setPayPwd(String payPwd) {
+        this.payPwd = payPwd;
+    }
+
+    public static final class t {
         public static final String nickname = "nickname";
         public static final String telephone = "telephone";
         public static final String password = "password";
         public static final String head_img_url = "head_img_url";
+        public static final String paypwd = "paypwd";
 
     }
 }
