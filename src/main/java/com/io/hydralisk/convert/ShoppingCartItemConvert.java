@@ -28,7 +28,7 @@ public class ShoppingCartItemConvert {
         vo.setProductid(info.getItemId());
         vo.setPt_price("0");
         vo.setStime(0);
-        vo.setTitle(info.getTitle());
+        vo.setTitle(info.getItemName());
         vo.setTotal_num(1000);//库存量
         vo.setUserid(info.getUserId());
         vo.setWeight(null);

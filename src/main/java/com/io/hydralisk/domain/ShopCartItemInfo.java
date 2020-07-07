@@ -21,8 +21,8 @@ public class ShopCartItemInfo {
     private BigDecimal price;
     @TableField(value = t.create_time)
     private Date createTime;
-    @TableField(value = t.title)
-    private String title;
+    @TableField(value = t.item_name)
+    private String itemName;
     @TableField(value = t.user_id)
     private String userId;
     @TableField(value = t.item_id)
@@ -70,12 +70,12 @@ public class ShopCartItemInfo {
         this.createTime = createTime;
     }
 
-    public String getTitle() {
-        return title;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getUserId() {
@@ -101,7 +101,7 @@ public class ShopCartItemInfo {
         public static final String item_id = "item_id";
         public static final String item_img_url = "item_img_url";
         public static final String user_id = "user_id";
-        public static final String title = "title";
+        public static final String item_name = "item_name";
         public static final String create_time = "create_time";
     }
 }

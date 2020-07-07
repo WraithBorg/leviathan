@@ -7,6 +7,7 @@ import com.io.hydralisk.mapper.ReceiptInfoMapper;
 import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.service.usb.ReceiptInfoService;
 import com.io.hydralisk.service.usb.UserInfoService;
+import com.io.hydralisk.util.CCommonUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +46,8 @@ public class ReceiptInfoServiceImpl implements ReceiptInfoService {
     }
 
     @Override
-    public List<ReceiptInfo> selectList(Object o) {
-        return receiptInfoMapper.selectList(null);
+    public List<ReceiptInfo> selectList(String userId) {
+        List<ReceiptInfo> receiptInfoList = receiptInfoMapper.selectByMap(CCommonUtils.ofMap(ReceiptInfo.t.user_id, userId));
+        return receiptInfoList;
     }
 }

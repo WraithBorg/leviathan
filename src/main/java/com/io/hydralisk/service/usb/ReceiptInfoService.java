@@ -9,7 +9,7 @@ public interface ReceiptInfoService {
 
     void insert(ReceiptInfo receiptInfo);
 
-    List<ReceiptInfo> selectList(Object o);
+    List<ReceiptInfo> selectList(String userId);
 
     public void updateById(ReceiptInfo receiptInfo);
 

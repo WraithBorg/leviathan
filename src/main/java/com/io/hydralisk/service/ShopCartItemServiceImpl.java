@@ -70,7 +70,7 @@ public class ShopCartItemServiceImpl implements ShopCartItemService {
         newCartItemInfo.setAmount(itemAmount);
         newCartItemInfo.setCreateTime(new Date());
         newCartItemInfo.setItemId(itemId);
-        newCartItemInfo.setTitle(itemInfo.getName());
+        newCartItemInfo.setItemName(itemInfo.getName());
         newCartItemInfo.setItemImgUrl(itemImgUrl);
         newCartItemInfo.setPrice(itemInfo.getPrice());
         newCartItemInfo.setUserId(userId);

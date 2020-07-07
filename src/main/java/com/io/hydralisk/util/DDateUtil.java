@@ -1,6 +1,5 @@
 package com.io.hydralisk.util;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -8,18 +7,14 @@ import java.util.Date;
  * 日期工具类
  */
 public class DDateUtil {
-    private static final String date_format = "yyyy-MM-dd HH:mm:ss";
-    private static ThreadLocal<DateFormat> threadLocal = new ThreadLocal<>();
+    public static final ThreadLocal<SimpleDateFormat> DATETIME_FORMATTER = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+    public static final ThreadLocal<SimpleDateFormat> DAY_FORMATTER = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyMMddHHmmss"));
+    public static final ThreadLocal<SimpleDateFormat> YDAY_FORMATT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyyMMdd"));
+    public static final ThreadLocal<SimpleDateFormat> DATETIME_EDIFORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy年MM月dd日 HH:mm"));
+    public static final ThreadLocal<SimpleDateFormat> NYR_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy年MM月dd日"));
 
-    private static DateFormat getDateFormat() {
-        DateFormat df = threadLocal.get();
-        if (df == null) {
-            df = new SimpleDateFormat(date_format);
-            threadLocal.set(df);
-        }
-        return df;
-    }
-    public static String format(Date date){
-        return getDateFormat().format(date);
+
+    public static String format(Date date) {
+        return DATETIME_FORMATTER.get().format(date);
     }
 }

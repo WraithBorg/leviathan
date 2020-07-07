@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-07-07 10:56:07
+Date: 2020-07-07 18:21:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,6 +112,91 @@ INSERT INTO `kefu_log` VALUES ('1', '3', '2020-07-07 09:25:11', '1', '有券吗�
 INSERT INTO `kefu_log` VALUES ('590fecce32391083d0b07115546f6685', '3', '2020-07-07 09:58:11', '1', '有人吗');
 
 -- ----------------------------
+-- Table structure for order_bill
+-- ----------------------------
+DROP TABLE IF EXISTS `order_bill`;
+CREATE TABLE `order_bill` (
+  `id` varchar(40) NOT NULL,
+  `order_no` varchar(40) NOT NULL COMMENT '订单编号',
+  `trade_no` varchar(40) DEFAULT NULL COMMENT '支付订单流水号',
+  `logistics_id` varchar(40) DEFAULT NULL COMMENT '物流信息',
+  `remark` varchar(255) DEFAULT NULL COMMENT '订单备注',
+  `sum_money` decimal(16,2) NOT NULL COMMENT '订单金额',
+  `pay_type` tinyint(2) DEFAULT NULL COMMENT '支付类型',
+  `pay_money` decimal(16,2) DEFAULT NULL COMMENT '支付金额',
+  `item_amount_total` decimal(16,2) DEFAULT NULL COMMENT '订单商品数量合计',
+  `freight` decimal(16,2) DEFAULT NULL COMMENT '运费',
+  `pay_status` tinyint(255) DEFAULT NULL COMMENT '支付状态',
+  `create_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `user_id` varchar(40) NOT NULL COMMENT '用户ID',
+  `state` tinyint(3) NOT NULL COMMENT '单据状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of order_bill
+-- ----------------------------
+INSERT INTO `order_bill` VALUES ('239b8b159c8e40969ca0a20c8b926c93', 'DD2007071759551000', null, 'ce38dd65c67f4c1a883a8b8eff9ba64e', '哈哈哈哈', '2000.00', '100', '2000.00', '2.00', '0.00', '0', '2020-07-07 18:15:52', '3', '101');
+INSERT INTO `order_bill` VALUES ('c0ecd87aceea47f6a91af8d7441daa51', 'DD2007071821041000', null, '3f7287665794471a9fb33afccb2b2238', '备注 啊啊啊啊啊', '4000.00', '100', '4000.00', '4.00', '0.00', '0', '2020-07-07 18:21:05', '3', '101');
+INSERT INTO `order_bill` VALUES ('ce28e877f9a240b38dc34f841db57f41', 'DD2007071751191000', null, '6be261fe98ab4a1296b5e5e9be77fe63', '123阿萨', '20000.00', '100', '20000.00', '10.00', '0.00', '0', '2020-07-07 18:15:54', '3', '101');
+
+-- ----------------------------
+-- Table structure for order_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `order_detail`;
+CREATE TABLE `order_detail` (
+  `id` varchar(40) NOT NULL,
+  `order_id` varchar(40) NOT NULL COMMENT '订单ID',
+  `item_id` varchar(40) NOT NULL COMMENT '商品ID',
+  `item_name` varchar(255) NOT NULL COMMENT '商品名',
+  `item_price` decimal(10,2) NOT NULL COMMENT '商品价格',
+  `amount` decimal(16,2) NOT NULL COMMENT '购买数量',
+  `sum_money` decimal(16,2) NOT NULL COMMENT '金额小计',
+  `remark` varchar(255) NOT NULL COMMENT '商品备注',
+  `create_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `user_id` varchar(40) NOT NULL,
+  `item_img_url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of order_detail
+-- ----------------------------
+INSERT INTO `order_detail` VALUES ('1488de70e09523a306aef3a4fd512559', '239b8b159c8e40969ca0a20c8b926c93', '166', '2018白毫银针-A02', '1000.00', '1.00', '1000.00', '', '2020-07-07 17:59:55', '3', 'attach/2020/05/06/85.jpg');
+INSERT INTO `order_detail` VALUES ('1b1b1555632eb4f4e10f626dfbf5d3f2', 'c0ecd87aceea47f6a91af8d7441daa51', '160', '2020白毫银针-A01', '1000.00', '2.00', '2000.00', '', '2020-07-07 18:21:05', '3', 'attach/2020/04/17/61.jpg');
+INSERT INTO `order_detail` VALUES ('46700032d6ffbeae4b4a68bc0e8d1737', 'ce28e877f9a240b38dc34f841db57f41', '163', '2014年贡眉-A01', '3000.00', '5.00', '15000.00', '', '2020-07-07 17:51:20', '3', 'attach/2020/05/06/82.jpg');
+INSERT INTO `order_detail` VALUES ('aba78656c6cba65860e7edcfd002f5ca', 'ce28e877f9a240b38dc34f841db57f41', '166', '2018白毫银针-A02', '1000.00', '3.00', '3000.00', '', '2020-07-07 17:51:20', '3', 'attach/2020/05/06/85.jpg');
+INSERT INTO `order_detail` VALUES ('bb0169546527b5bceb7bdb12eaf4ce64', '239b8b159c8e40969ca0a20c8b926c93', '160', '2020白毫银针-A01', '1000.00', '1.00', '1000.00', '', '2020-07-07 17:59:55', '3', 'attach/2020/04/17/61.jpg');
+INSERT INTO `order_detail` VALUES ('c16d52569a98401b04b309d979d65924', 'c0ecd87aceea47f6a91af8d7441daa51', '166', '2018白毫银针-A02', '1000.00', '2.00', '2000.00', '', '2020-07-07 18:21:05', '3', 'attach/2020/05/06/85.jpg');
+INSERT INTO `order_detail` VALUES ('ef35411daff99354d376a534cc8d8d55', 'ce28e877f9a240b38dc34f841db57f41', '160', '2020白毫银针-A01', '1000.00', '2.00', '2000.00', '', '2020-07-07 17:51:20', '3', 'attach/2020/04/17/61.jpg');
+
+-- ----------------------------
+-- Table structure for order_logistics
+-- ----------------------------
+DROP TABLE IF EXISTS `order_logistics`;
+CREATE TABLE `order_logistics` (
+  `id` varchar(40) NOT NULL,
+  `order_id` varchar(40) NOT NULL COMMENT '订单ID',
+  `express_no` varchar(40) DEFAULT NULL COMMENT '快递单号',
+  `cnee_realname` varchar(100) NOT NULL COMMENT '收货人姓名',
+  `cnee_telephone` varchar(20) NOT NULL COMMENT '收货人手机号',
+  `cnee_address` varchar(100) NOT NULL COMMENT '收货人地址',
+  `freight` decimal(16,2) NOT NULL COMMENT '运费',
+  `delivery_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '发货时间',
+  `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '物流更新时间',
+  `create_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(2) NOT NULL COMMENT '物流状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of order_logistics
+-- ----------------------------
+INSERT INTO `order_logistics` VALUES ('3f7287665794471a9fb33afccb2b2238', 'c0ecd87aceea47f6a91af8d7441daa51', null, '王五', '114', '啊啊啊1号', '0.00', null, '2020-07-07 18:21:05', '2020-07-07 18:21:05', '101');
+INSERT INTO `order_logistics` VALUES ('6be261fe98ab4a1296b5e5e9be77fe63', 'ce28e877f9a240b38dc34f841db57f41', null, '王五', '114', '啊啊啊1号', '0.00', null, '2020-07-07 17:51:20', '2020-07-07 17:51:20', '101');
+INSERT INTO `order_logistics` VALUES ('ce38dd65c67f4c1a883a8b8eff9ba64e', '239b8b159c8e40969ca0a20c8b926c93', null, '王五', '114', '啊啊啊1号', '0.00', null, '2020-07-07 17:59:55', '2020-07-07 17:59:55', '101');
+
+-- ----------------------------
 -- Table structure for receipt_info
 -- ----------------------------
 DROP TABLE IF EXISTS `receipt_info`;
@@ -133,6 +218,7 @@ CREATE TABLE `receipt_info` (
 -- Records of receipt_info
 -- ----------------------------
 INSERT INTO `receipt_info` VALUES ('1', '1', '九号楼', '15620606954', '张三三', '', '0', '0', '0', '0');
+INSERT INTO `receipt_info` VALUES ('dfb923600c06f527e4015703c6adb670', '3', '啊啊啊1号', '114', '王五', '', '0', '17', '258', '2812');
 INSERT INTO `receipt_info` VALUES ('ec1ef77a92225398d9c5cc45a98bfdc8', '3', '19号', '122', '李四', '', '0', '9', '153', '1902');
 
 -- ----------------------------
@@ -141,21 +227,19 @@ INSERT INTO `receipt_info` VALUES ('ec1ef77a92225398d9c5cc45a98bfdc8', '3', '19�
 DROP TABLE IF EXISTS `shop_cart_item`;
 CREATE TABLE `shop_cart_item` (
   `id` varchar(40) NOT NULL,
-  `user_id` int(11) DEFAULT NULL COMMENT '用户主键',
-  `amount` decimal(10,2) DEFAULT NULL COMMENT '购物车数量',
-  `price` decimal(10,2) DEFAULT NULL COMMENT '加购价格',
-  `create_time` datetime DEFAULT NULL COMMENT '加购时间',
-  `title` varchar(255) DEFAULT NULL COMMENT '商品加购名称',
-  `item_id` int(11) DEFAULT NULL COMMENT '商品主键',
-  `item_img_url` varchar(255) DEFAULT NULL COMMENT '商品图片',
+  `user_id` int(11) NOT NULL COMMENT '用户主键',
+  `amount` decimal(10,2) NOT NULL COMMENT '购物车数量',
+  `price` decimal(10,2) NOT NULL COMMENT '加购价格',
+  `create_time` datetime NOT NULL COMMENT '加购时间',
+  `item_name` varchar(100) NOT NULL COMMENT '商品加购名称',
+  `item_id` int(11) NOT NULL COMMENT '商品主键',
+  `item_img_url` varchar(200) NOT NULL COMMENT '商品图片',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of shop_cart_item
 -- ----------------------------
-INSERT INTO `shop_cart_item` VALUES ('35bee208c058aea7ad9b0e5b31de33c7', '3', '5.00', '3000.00', '2020-07-06 17:43:05', '2014年贡眉-A01', '163', 'attach/2020/05/06/82.jpg');
-INSERT INTO `shop_cart_item` VALUES ('a01fb27b61f744306043ac8d197491e0', '3', '2.00', '1000.00', '2020-07-07 10:17:43', '2020白毫银针-A01', '160', 'attach/2020/04/17/61.jpg');
 
 -- ----------------------------
 -- Table structure for user_fav_item

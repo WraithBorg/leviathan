@@ -1,6 +1,8 @@
 package com.io.hydralisk.util;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class DDecimalUtil {
@@ -12,4 +14,8 @@ public class DDecimalUtil {
     public static String format (BigDecimal bigDecimal){
         return format.format(bigDecimal);
     }
+    public static BigDecimal setScale (BigDecimal bigDecimal){
+        return bigDecimal.setScale(2, RoundingMode.HALF_UP);
+    }
+
 }
