@@ -1,15 +1,14 @@
 package com.io.hydralisk.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.io.hydralisk.domain.*;
 import com.io.hydralisk.dto.CreateOrderDTO;
 import com.io.hydralisk.eum.DeliveryStatus;
 import com.io.hydralisk.eum.OrderState;
-import com.io.hydralisk.eum.PayStatus;
 import com.io.hydralisk.eum.PayType;
 import com.io.hydralisk.mapper.*;
 import com.io.hydralisk.service.usb.OrderBillService;
 import com.io.hydralisk.util.BillNoUtil;
-import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.util.DDecimalUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +63,7 @@ public class OrderBillServiceImpl implements OrderBillService {
         orderBill.setPayMoney(DDecimalUtil.setScale(sumMoney));
         orderBill.setItemAmountTotal(DDecimalUtil.setScale(totalAmount));
         orderBill.setFreight(BigDecimal.ZERO);// TODO
-        orderBill.setPayStatus(PayStatus.WAIT_PAY.id);
+        orderBill.setPayStatus(OrderState.UN_PAY.id);
         orderBill.setUserId(defaultUser.getId());
         orderBill.setState(OrderState.UN_PAY.id);
         billMapper.insert(orderBill);
@@ -102,16 +101,27 @@ public class OrderBillServiceImpl implements OrderBillService {
         cartItemInfos.forEach(m -> shopCartItemMapper.deleteById(m.getId()));
     }
 
-    /**
-     * 查询订单列表
-     */
+
     @Override
     public List<OrderBill> getMyOrder(String userId, String type) {
         Integer state = OrderState.getId(type);
         if (state == null) {
-            return billMapper.selectByMap(CCommonUtils.ofMap(OrderBill.t.user_id, userId));
+            QueryWrapper<OrderBill> queryWrapper = new QueryWrapper<>();
+            queryWrapper.lambda().eq(OrderBill::getUserId, userId).ne(OrderBill::getState, OrderState.CANCELLED.id);
+            return billMapper.selectList(queryWrapper);
         }
-        List<OrderBill> orderBills = billMapper.selectByMap(CCommonUtils.ofMap(OrderBill.t.user_id, userId, OrderBill.t.state, state));
-        return orderBills;
+        QueryWrapper<OrderBill> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(OrderBill::getUserId, userId).eq(OrderBill::getState, state);
+        return billMapper.selectList(queryWrapper);
+
+    }
+
+    @Override
+    public void cancelOrder(String id) {
+        OrderBill orderBill = billMapper.selectById(id);
+        orderBill.setState(OrderState.CANCELLED.id);
+        billMapper.updateById(orderBill);
+//        logisticsMapper.deleteByMap(CCommonUtils.ofMap(OrderLogistics.t.order_id,id));// TODO
+//        detailMapper.deleteByMap(CCommonUtils.ofMap(OrderLogistics.t.order_id,id));// TODO
     }
 }

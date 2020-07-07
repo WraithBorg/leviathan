@@ -2,6 +2,7 @@ package com.io.hydralisk.eum;
 
 public enum  OrderState {
 
+    CANCELLED(10, "cancelled","已取消"),
     UN_PAY(101, "unpay","待付款"),
     UN_PIN(202, "unpin","待成团"),
     UN_SEND(304, "unsend","待发货"),
@@ -24,5 +25,13 @@ public enum  OrderState {
             }
         }
         return null;
+    }
+    public  static String getText(Integer s) {
+        for (OrderState val : values()) {
+            if (val.id.equals(s)){
+                return val.text;
+            }
+        }
+        return "";
     }
 }

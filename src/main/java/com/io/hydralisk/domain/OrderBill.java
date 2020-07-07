@@ -40,7 +40,7 @@ public class OrderBill {
     @TableField(value = t.user_id)
     private String userId;//
     @TableField(value = t.state)
-    private Integer state;//支付状态
+    private Integer state;//状态
 
     public static class t {
         public static final String order_no = "order_no";//订单编号

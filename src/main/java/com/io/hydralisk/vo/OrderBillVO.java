@@ -1,12 +1,9 @@
 package com.io.hydralisk.vo;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class OrderBillVO {
 
-    private OrderBillAddrVO addr;//收货地址
-    private List<OrderDetailVO> prolist;//商品列表
     private String comment;//订单备注
     private String createtime;//创建时间
     private String goods_money;//货品金额
@@ -40,22 +37,6 @@ public class OrderBillVO {
     private String timeago = "1分前";//订单创建间隔
     private String vipmoney = "0.00";//vip金额
     private String whocancel = "";
-    /******************************************/
-    public OrderBillAddrVO getAddr() {
-        return addr;
-    }
-
-    public void setAddr(OrderBillAddrVO addr) {
-        this.addr = addr;
-    }
-
-    public List<OrderDetailVO> getProlist() {
-        return prolist;
-    }
-
-    public void setProlist(List<OrderDetailVO> prolist) {
-        this.prolist = prolist;
-    }
 
     public String getComment() {
         return comment;
