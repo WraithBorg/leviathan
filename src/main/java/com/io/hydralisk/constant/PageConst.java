@@ -39,6 +39,7 @@ public class PageConst {
     public static String USER_INFO_SHOW;//用户信息页面
     public static String USER_SET_SHOW;//用户设置页面
     public static String INDEX;//首页
+    public static String IMG_PATH;//静态图片访问地址
 
     @Value("${webpage.web_host}")
     public void setWebHost(String web_host) {
@@ -127,5 +128,9 @@ public class PageConst {
     @Value("${webpage.index}")
     public void setINDEX(String index) {
         PageConst.INDEX = index;
+    }
+    @Value("${webpage.img_path}")
+    public void setImgPath(String imgPath) {
+        IMG_PATH = imgPath;
     }
 }

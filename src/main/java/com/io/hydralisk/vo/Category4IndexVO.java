@@ -1,5 +1,7 @@
 package com.io.hydralisk.vo;
 
+import com.io.hydralisk.constant.PageConst;
+
 import java.util.Date;
 
 /**
@@ -12,7 +14,7 @@ public class Category4IndexVO {
     private Date dateline = new Date();
     private Date starttime = new Date();
     private Date endtime = new Date();
-    private String imgurl = "https://kfbc-deitui-com.oss-cn-hangzhou.aliyuncs.com/attach/2020/05/01/fa83ec1695ffe4657144aa12e1dfb12b.jpg";
+    private String imgurl = PageConst.IMG_PATH + "static/book.png";
     private String imgurl2 = "";
     private String link1 = "../../pageb2c/b2c_product/list?catid=22";
     private String link2 = "../../pageb2c/b2c_product/list?catid=22";

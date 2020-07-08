@@ -1,6 +1,7 @@
 package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.domain.OrderDetail;
 import com.io.hydralisk.util.DDateUtil;
 import com.io.hydralisk.util.DDecimalUtil;
@@ -20,7 +21,7 @@ public class OrderDetailConvert {
         vo.setAmount(info.getAmount());
         vo.setCreatetime(DDateUtil.format(info.getCreateTime()));
         vo.setId(info.getId());
-        vo.setImgurl(CConstant.IMAGE_HOST + info.getItemImgUrl());
+        vo.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
         vo.setPrice(DDecimalUtil.format(info.getItemPrice()));
         vo.setProductid(info.getItemId());
         vo.setTitle(info.getItemName());

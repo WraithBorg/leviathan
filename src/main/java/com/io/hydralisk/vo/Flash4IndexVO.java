@@ -1,5 +1,7 @@
 package com.io.hydralisk.vo;
 
+import com.io.hydralisk.constant.PageConst;
+
 import java.util.Date;
 
 public class Flash4IndexVO {
@@ -7,7 +9,7 @@ public class Flash4IndexVO {
     private Date dateline = new Date();
     private Date endtime = new Date();
     private String id = "6";
-    private String imgurl = "https://kfbc-deitui-com.oss-cn-hangzhou.aliyuncs.com/attach/2020/04/30/8f72893df4fe0f48ba5095bd036dc0c1.jpg";
+    private String imgurl = PageConst.IMG_PATH + "static/index_flash_01.png";
     private String imgurl2 = "";
     private String info = "";
     private String link1 = "";

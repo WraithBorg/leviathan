@@ -122,7 +122,7 @@ public class ItemInfoController {
             if (CCommonUtils.isBlank(m.getUrl())) {
                 return null;
             }
-            return CConstant.IMAGE_HOST + m.getUrl();
+            return  PageConst.IMG_PATH + "static/index_flash_01.png";
         }).collect(Collectors.toList());
         // 查看是否该商品是否在收藏夹里
         UserInfo defaultUser = userInfoMapper.getDefaultUser();
@@ -154,11 +154,11 @@ public class ItemInfoController {
     public MsgResult raty(@RequestParam String id, @RequestParam String limit) {
         ArrayList<Object> list = new ArrayList<>();
         UserInfo userInfo = userInfoMapper.getDefaultUser();
-        list.add(CCommonUtils.ofMap("user_head", CConstant.DEFAULT_HEAD_URL +userInfo.getHeadImgUrl(),
+        list.add(CCommonUtils.ofMap("user_head", PageConst.IMG_PATH +userInfo.getHeadImgUrl(),
                 "nickname", "张三",
                 "raty_grade", "3",
                 "raty_content", "这玩意真好" ));
-        list.add(CCommonUtils.ofMap("user_head", CConstant.DEFAULT_HEAD_URL +userInfo.getHeadImgUrl(),
+        list.add(CCommonUtils.ofMap("user_head", PageConst.IMG_PATH +userInfo.getHeadImgUrl(),
                 "nickname", "李四",
                 "raty_grade", "3",
                 "raty_content", "这玩意真垃圾" ));

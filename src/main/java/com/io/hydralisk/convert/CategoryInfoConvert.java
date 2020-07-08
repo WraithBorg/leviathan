@@ -1,6 +1,7 @@
 package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.Category4IndexVO;
@@ -33,7 +34,7 @@ public class CategoryInfoConvert {
         categoryVO.setEx_table_id(0L);
 
         if (CCommonUtils.isNotBlank(categoryInfo.getImgUrl())){
-            categoryVO.setImgurl(CConstant.IMAGE_HOST+categoryInfo.getImgUrl());
+            categoryVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
         }
 
         categoryVO.setOrderindex(0);

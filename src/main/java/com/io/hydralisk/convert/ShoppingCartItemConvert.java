@@ -1,6 +1,7 @@
 package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.domain.ShopCartItemInfo;
 import com.io.hydralisk.util.DDateUtil;
 import com.io.hydralisk.util.DDecimalUtil;
@@ -20,7 +21,7 @@ public class ShoppingCartItemConvert {
         vo.setCreatetime(DDateUtil.format(info.getCreateTime()));
         vo.setEtime(0);
         vo.setId(info.getId());
-        vo.setImgurl(CConstant.IMAGE_HOST + info.getItemImgUrl());
+        vo.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
         vo.setKs_title("");
         vo.setKsid(0L);
         vo.setOtype("");

@@ -1,6 +1,7 @@
 package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.UserInfoVO;
@@ -29,7 +30,7 @@ public class UserInfoConvert {
         vo.setNickname(userInfo.getNickName());
         vo.setStatus(10);
         vo.setTelephone(CConstant.DEFAULT_TELEPHONE);
-        vo.setUser_head(CConstant.DEFAULT_HEAD_URL +userInfo.getHeadImgUrl());
+        vo.setUser_head(PageConst.IMG_PATH +userInfo.getHeadImgUrl());
         vo.setUser_type(1);
         vo.setUserid(userInfo.getId());
         vo.setUsername(userInfo.getNickName());
@@ -43,7 +44,7 @@ public class UserInfoConvert {
         vo.setGender(0);
         vo.setMoney("0");
         vo.setNickname(userInfo.getNickName());
-        vo.setUser_head(CConstant.DEFAULT_HEAD_URL +userInfo.getHeadImgUrl());
+        vo.setUser_head(PageConst.IMG_PATH +userInfo.getHeadImgUrl());
         vo.setUserid(userInfo.getId());
         vo.setUsername(userInfo.getNickName());
         return vo;

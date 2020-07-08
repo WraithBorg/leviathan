@@ -1,6 +1,7 @@
 package com.io.hydralisk.convert;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.domain.ItemInfo;
 import com.io.hydralisk.domain.ShopCartItemInfo;
 import com.io.hydralisk.domain.UserInfo;
@@ -52,7 +53,9 @@ public class ItemInfoConvert {
         itemInfoVO.setId(itemInfo.getId());
         itemInfoVO.setImgsdata(itemInfo.getDefaultImg());
         if (CCommonUtils.isNotBlank(itemInfo.getDefaultImg())) {
-            itemInfoVO.setImgurl(CConstant.IMAGE_HOST + itemInfo.getDefaultImg());
+            itemInfoVO.setImgurl(PageConst.IMG_PATH + "static/hot_book.png");
+        }else {
+            itemInfoVO.setImgurl(PageConst.IMG_PATH + "static/hot_book.png");
         }
 
         itemInfoVO.setIncart(cartAmount > 0 ? 1 : 0);
@@ -98,8 +101,11 @@ public class ItemInfoConvert {
         itemInfoVO.setBuy_num(itemInfo.getBuyNum());
         itemInfoVO.setId(itemInfo.getId());
         if (CCommonUtils.isNotBlank(itemInfo.getDefaultImg())) {
-            itemInfoVO.setImgurl(CConstant.IMAGE_HOST + itemInfo.getDefaultImg());
+            itemInfoVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
+        }else{
+            itemInfoVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
         }
+
         itemInfoVO.setPrice(itemInfo.getPrice().toEngineeringString());
         itemInfoVO.setTitle(itemInfo.getName());
         // DEFAULT
