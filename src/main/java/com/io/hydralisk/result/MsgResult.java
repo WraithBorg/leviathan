@@ -1,6 +1,8 @@
 package com.io.hydralisk.result;
 
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.util.BeanTools;
+import com.io.hydralisk.util.CCommonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +14,7 @@ public class MsgResult<T> {
 
     private T data;
     private String message;
+    private String url;
     private MsgResultType type;
 
     public MsgResult(MsgResultType type) {
@@ -25,6 +28,12 @@ public class MsgResult<T> {
     public MsgResult(T data, String message, String[] args, MsgResultType type) {
         this.data = data;
         this.type = type;
+        setMessage(message, args);
+    }
+    public MsgResult(T data, String message, String[] args, MsgResultType type,String url) {
+        this.data = data;
+        this.type = type;
+        this.url = url;
         setMessage(message, args);
     }
 
@@ -47,7 +56,13 @@ public class MsgResult<T> {
     public static <T> MsgResult<T> done(T data) {
         return new MsgResult<>(data, null, null, MsgResultType.SUCCESS);
     }
-
+    public static <T> MsgResult<T> doneUrl(T data,String url) {
+        return new MsgResult<>(data, null, null, MsgResultType.SUCCESS);
+    }
+    @SuppressWarnings("unchecked")
+    public static <T> MsgResult doneUrl(String datatype, T data, String url) {
+        return new MsgResult(CCommonUtils.ofMap(datatype, data),   null, null,MsgResultType.SUCCESS,url);
+    }
     public static <T> MsgResult<T> done(T data, String message) {
         return new MsgResult<>(data, message, null, MsgResultType.SUCCESS);
     }
@@ -165,6 +180,10 @@ public class MsgResult<T> {
 
     public void setType(MsgResultType type) {
         this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     @Override
