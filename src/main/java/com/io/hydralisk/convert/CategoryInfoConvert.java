@@ -3,6 +3,7 @@ package com.io.hydralisk.convert;
 import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.vo.Category4IndexVO;
 import com.io.hydralisk.vo.CategoryVO;
 import org.springframework.stereotype.Component;
 
@@ -38,6 +39,17 @@ public class CategoryInfoConvert {
         categoryVO.setOrderindex(0);
         categoryVO.setPid(categoryInfo.getPid());
         categoryVO.setStatus(1);
+        categoryVO.setTitle(categoryInfo.getName());
+        return categoryVO;
+    }
+    public List<Category4IndexVO> getCategory4IndexVOS(List<CategoryInfo> categoryInfos) {
+        List<Category4IndexVO> categoryVOS = categoryInfos.stream().map(this::getCategory4IndexVO).collect(Collectors.toList());
+        return categoryVOS;
+    }
+    private Category4IndexVO getCategory4IndexVO(CategoryInfo categoryInfo){
+        Category4IndexVO categoryVO = new Category4IndexVO();
+        categoryVO.setId(categoryInfo.getId());
+        categoryVO.setInfo(categoryInfo.getName());
         categoryVO.setTitle(categoryInfo.getName());
         return categoryVO;
     }

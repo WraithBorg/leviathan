@@ -32,4 +32,30 @@ public class ItemInfoServiceImpl implements ItemInfoService {
         }
         return itemInfo;
     }
+
+    /**
+     * 获取商品信息以及图片
+     */
+    @Override
+    public List<ItemInfo> selectListWithImg() {
+        List<ItemInfo> itemInfos = itemInfoMapper.selectList(null);
+        itemInfos.forEach(m -> {
+            List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, m.getId(), ItemInfoImg.t.default_flag, "1"));
+            if (itemInfoImgs.size() > 0) {
+                m.setDefaultImg(itemInfoImgs.get(0).getUrl());
+            }
+        });
+        return itemInfos;
+    }
+    @Override
+    public List<ItemInfo> selectListWithImg( List<ItemInfo> itemInfos) {
+
+        itemInfos.forEach(m -> {
+            List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, m.getId(), ItemInfoImg.t.default_flag, "1"));
+            if (itemInfoImgs.size() > 0) {
+                m.setDefaultImg(itemInfoImgs.get(0).getUrl());
+            }
+        });
+        return itemInfos;
+    }
 }

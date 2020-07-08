@@ -1,11 +1,10 @@
 package com.io.hydralisk.controller;
 
-import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.LoginDTO;
-import com.io.hydralisk.dto.NavDTO;
+import com.io.hydralisk.vo.UserMenuVO;
 import com.io.hydralisk.dto.RegisterDTO;
 import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.result.MsgResult;
@@ -80,7 +79,7 @@ public class LoginController {
     public MsgResult b2c_user() {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserInfoVO userInfoVO = userInfoConvert.getUserVO(defaultUser);
-        Map data = CCommonUtils.ofMap("data", userInfoVO, "navList", NavDTO.getNavList());
+        Map data = CCommonUtils.ofMap("data", userInfoVO, "navList", UserMenuVO.getNavList());
         return MsgResult.doneUrl(data,PageConst.USER_INDEX);
     }
 }

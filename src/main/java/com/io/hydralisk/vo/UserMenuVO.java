@@ -1,11 +1,14 @@
-package com.io.hydralisk.dto;
+package com.io.hydralisk.vo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NavDTO {
+/**
+ * 用户菜单
+ */
+public class UserMenuVO {
     private String a;
-    private List<NavChildDTO> child;
+    private List<UserMenuChildVO> child;
     private Integer group_id;
     private String icon;
     private Long id;
@@ -26,11 +29,11 @@ public class NavDTO {
         this.a = a;
     }
 
-    public List<NavChildDTO> getChild() {
+    public List<UserMenuChildVO> getChild() {
         return child;
     }
 
-    public void setChild(List<NavChildDTO> child) {
+    public void setChild(List<UserMenuChildVO> child) {
         this.child = child;
     }
 
@@ -122,10 +125,10 @@ public class NavDTO {
         this.title = title;
     }
 
-    private static NavDTO get栏目二() {
-        NavDTO navDTO = new NavDTO();
+    private static UserMenuVO get栏目二() {
+        UserMenuVO navDTO = new UserMenuVO();
         navDTO.setA("");
-        navDTO.setChild(NavChildDTO.getNavList());
+        navDTO.setChild(UserMenuChildVO.getNavList());
         navDTO.setGroup_id(7);
         navDTO.setIcon("");
         navDTO.setId(297L);
@@ -140,8 +143,8 @@ public class NavDTO {
         return navDTO;
     }
 
-    public static  List<NavDTO> getNavList() {
-        List<NavDTO> navDTOS = new ArrayList<>();
+    public static  List<UserMenuVO> getNavList() {
+        List<UserMenuVO> navDTOS = new ArrayList<>();
         navDTOS.add(get栏目二());
         return navDTOS;
 

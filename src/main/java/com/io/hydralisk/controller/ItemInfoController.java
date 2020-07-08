@@ -49,7 +49,8 @@ public class ItemInfoController {
     private UserFavItemService userFavInfoService;
     @Resource
     private UserInfoMapper userInfoMapper;
-
+    @Resource
+    private ItemInfoService itemInfoService;
     /**
      * 商品列表
      */
@@ -96,13 +97,7 @@ public class ItemInfoController {
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
         //
-        List<ItemInfo> itemInfos = itemInfoMapper.selectList(null);
-        itemInfos.forEach(m -> {
-            List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, m.getId(), ItemInfoImg.t.default_flag, "1"));
-            if (itemInfoImgs.size() > 0) {
-                m.setDefaultImg(itemInfoImgs.get(0).getUrl());
-            }
-        });
+        List<ItemInfo> itemInfos = itemInfoService.selectListWithImg();
         List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
         Map data = CCommonUtils.ofMapN(
                 "rscount", 0,
@@ -180,13 +175,7 @@ public class ItemInfoController {
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
         //
-        List<ItemInfo> itemInfos = itemInfoMapper.selectList(null);
-        itemInfos.forEach(m -> {
-            List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, m.getId(), ItemInfoImg.t.default_flag, "1"));
-            if (itemInfoImgs.size() > 0) {
-                m.setDefaultImg(itemInfoImgs.get(0).getUrl());
-            }
-        });
+        List<ItemInfo> itemInfos = itemInfoService.selectListWithImg();
         List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
         Map data = CCommonUtils.ofMapN(
                 "rscount", list.size(),

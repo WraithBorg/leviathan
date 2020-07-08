@@ -1,9 +1,9 @@
-package com.io.hydralisk.dto;
+package com.io.hydralisk.vo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NavChildDTO {
+public class UserMenuChildVO {
     private Long id;
     private String title;
     private Integer orderindex;
@@ -113,8 +113,8 @@ public class NavChildDTO {
         this.icon = icon;
     }
 
-    static NavChildDTO get我的消息() {
-        NavChildDTO 我的消息 = new NavChildDTO();
+    static UserMenuChildVO get我的消息() {
+        UserMenuChildVO 我的消息 = new UserMenuChildVO();
         我的消息.setA("");
         我的消息.setGroup_id(7);
         我的消息.setIcon("icon-notice");
@@ -130,8 +130,8 @@ public class NavChildDTO {
         return 我的消息;
     }
 
-    static NavChildDTO get消费记录() {
-        NavChildDTO 消费记录 = new NavChildDTO();
+    static UserMenuChildVO get消费记录() {
+        UserMenuChildVO 消费记录 = new UserMenuChildVO();
         消费记录.setA("my");
         消费记录.setGroup_id(7);
         消费记录.setIcon("icon-moneybag");
@@ -147,8 +147,8 @@ public class NavChildDTO {
         return 消费记录;
     }
 
-    static NavChildDTO get充值记录() {
-        NavChildDTO 充值记录 = new NavChildDTO();
+    static UserMenuChildVO get充值记录() {
+        UserMenuChildVO 充值记录 = new UserMenuChildVO();
         充值记录.setA("my");
         充值记录.setGroup_id(7);
         充值记录.setIcon("icon-moneybag");
@@ -164,8 +164,8 @@ public class NavChildDTO {
         return 充值记录;
     }
 
-    static NavChildDTO get我的收藏() {
-        NavChildDTO 我的收藏 = new NavChildDTO();
+    static UserMenuChildVO get我的收藏() {
+        UserMenuChildVO 我的收藏 = new UserMenuChildVO();
         我的收藏.setA("my");
         我的收藏.setGroup_id(7);
         我的收藏.setIcon("icon-favor");
@@ -181,8 +181,8 @@ public class NavChildDTO {
         return 我的收藏;
     }
 
-    static NavChildDTO get我的评论() {
-        NavChildDTO 我的评论 = new NavChildDTO();
+    static UserMenuChildVO get我的评论() {
+        UserMenuChildVO 我的评论 = new UserMenuChildVO();
         我的评论.setA("my");
         我的评论.setGroup_id(7);
         我的评论.setIcon("icon-comment");
@@ -198,8 +198,8 @@ public class NavChildDTO {
         return 我的评论;
     }
 
-    static NavChildDTO get收货地址() {
-        NavChildDTO 收货地址 = new NavChildDTO();
+    static UserMenuChildVO get收货地址() {
+        UserMenuChildVO 收货地址 = new UserMenuChildVO();
         收货地址.setA("my");
         收货地址.setGroup_id(7);
         收货地址.setIcon("icon-addressbook");
@@ -215,8 +215,8 @@ public class NavChildDTO {
         return 收货地址;
     }
 
-    static List<NavChildDTO> getNavList() {
-        List<NavChildDTO> navChildDTOS = new ArrayList<>();
+    static List<UserMenuChildVO> getNavList() {
+        List<UserMenuChildVO> navChildDTOS = new ArrayList<>();
         navChildDTOS.add(get我的消息());
         navChildDTOS.add(get消费记录());
         navChildDTOS.add(get充值记录());

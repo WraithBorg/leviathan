@@ -1,6 +1,6 @@
 package com.io.hydralisk.controller;
 
-import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.chip.MultipartContext;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
@@ -66,12 +66,13 @@ public class UploadController {
      */
     private void uploadHeadImg(@RequestParam("upimg") MultipartFile file) {
         try {
-            String headFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
-            file.transferTo(new File(headFileName));
-            copyFile(headFileName);//复制小比例图片
-            // TODO 删除旧图片
             UserInfo defaultUser = userInfoMapper.getDefaultUser();
-            defaultUser.setHeadImgUrl(headFileName);
+            String headFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
+            File newFiel = new File(headFileName);
+            file.transferTo(newFiel);
+            copyFilex100(MultipartContext.multipartLocation + File.separator + headFileName);
+            deleteOldFile(defaultUser.getHeadImgUrl());
+            defaultUser.setHeadImgUrl("upload/"+headFileName);
             userInfoMapper.updateById(defaultUser);
         } catch (IOException e) {
             e.printStackTrace();
@@ -79,16 +80,33 @@ public class UploadController {
     }
 
     /**
+     * 删除旧头像
+     */
+    private void deleteOldFile(String imgUrl) {
+        String oldImgPath = MultipartContext.resourceLocation + imgUrl;
+        File oldImg = new File(oldImgPath);
+        if (oldImg.exists()&&oldImg.isFile()){
+            oldImg.delete();
+        }
+
+        String oldImgPathx100 = oldImgPath + ".100x100.jpg";
+        File oldImgx100 = new File(oldImgPathx100);
+        if (oldImgx100.exists()&&oldImgx100.isFile()){
+            oldImgx100.delete();
+        }
+    }
+
+    /**
      * 复制压缩100*100图片
      */
-    private void copyFile(String fileName) {
-        File file = new File(CConstant.LOCAL_HEAD_PATH + fileName);
-        FileInputStream fis = null;
+    private void copyFilex100(String filePathName) {
+        File file = new File(filePathName);
+        FileInputStream fis;
         try {
             fis = new FileInputStream(file);
             byte[] bit = new byte[fis.available()];
             fis.read(bit);
-            File file2 = new File(CConstant.LOCAL_HEAD_PATH + fileName + ".100x100.jpg");
+            File file2 = new File(filePathName + ".100x100.jpg");
             FileOutputStream fos = new FileOutputStream(file2);
             fos.write(bit);
             fis.close();

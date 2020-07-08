@@ -6,9 +6,10 @@ import com.io.hydralisk.domain.ShopCartItemInfo;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.mapper.ShopCartItemMapper;
 import com.io.hydralisk.service.usb.UserInfoService;
-import com.io.hydralisk.util.DDateUtil;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.DDateUtil;
 import com.io.hydralisk.util.DDecimalUtil;
+import com.io.hydralisk.vo.ItemInfo4IndexVO;
 import com.io.hydralisk.vo.ItemInfoVO;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,7 @@ public class ItemInfoConvert {
     private UserInfoService userInfoService;
 
     public List<ItemInfoVO> getItemInfoVOS(List<ItemInfo> itemInfos) {
-        List<ItemInfoVO> itemInfoVOS = itemInfos.stream().map(m -> getItemInfoVO(m)).collect(Collectors.toList());
+        List<ItemInfoVO> itemInfoVOS = itemInfos.stream().map(this::getItemInfoVO).collect(Collectors.toList());
         return itemInfoVOS;
     }
 
@@ -36,9 +37,9 @@ public class ItemInfoConvert {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         ShopCartItemInfo cartItemInfo = shopCartItemMapper.getByUserItem(itemInfo.getId(), defaultUser.getId());
         Integer cartAmount;
-        if (cartItemInfo == null){
+        if (cartItemInfo == null) {
             cartAmount = 0;
-        }else {
+        } else {
             cartAmount = DDecimalUtil.toInt(cartItemInfo.getAmount());
         }
         //
@@ -84,6 +85,35 @@ public class ItemInfoConvert {
         itemInfoVO.setVideourl("");
         itemInfoVO.setView_num(550);
 
+        return itemInfoVO;
+    }
+
+    public List<ItemInfo4IndexVO> getItemInfo4IndexVOS(List<ItemInfo> itemInfos) {
+        List<ItemInfo4IndexVO> itemInfoVOS = itemInfos.stream().map(m -> getItemInfo4IndexVO(m)).collect(Collectors.toList());
+        return itemInfoVOS;
+    }
+
+    public ItemInfo4IndexVO getItemInfo4IndexVO(ItemInfo itemInfo) {
+        ItemInfo4IndexVO itemInfoVO = new ItemInfo4IndexVO();
+        itemInfoVO.setBuy_num(itemInfo.getBuyNum());
+        itemInfoVO.setId(itemInfo.getId());
+        if (CCommonUtils.isNotBlank(itemInfo.getDefaultImg())) {
+            itemInfoVO.setImgurl(CConstant.IMAGE_HOST + itemInfo.getDefaultImg());
+        }
+        itemInfoVO.setPrice(itemInfo.getPrice().toEngineeringString());
+        itemInfoVO.setTitle(itemInfo.getName());
+        // DEFAULT
+        itemInfoVO.setEtime(0);
+        itemInfoVO.setLower_price("0");
+        itemInfoVO.setMarket_price("0");
+        itemInfoVO.setMonth_buy_num(0);
+        itemInfoVO.setOtype("");
+        itemInfoVO.setPt_open(0);
+        itemInfoVO.setPt_price("0");
+        itemInfoVO.setStime(0);
+        itemInfoVO.setTotal_num(99);
+        itemInfoVO.setOrderindex(99);
+        itemInfoVO.setProductid(itemInfo.getId());
         return itemInfoVO;
     }
 }

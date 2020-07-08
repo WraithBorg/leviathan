@@ -38,6 +38,7 @@ public class PageConst {
     public static String USER_PAY_PWD_SHOW;//修改支付密码页面
     public static String USER_INFO_SHOW;//用户信息页面
     public static String USER_SET_SHOW;//用户设置页面
+    public static String INDEX;//首页
 
     @Value("${webpage.web_host}")
     public void setWebHost(String web_host) {
@@ -122,5 +123,9 @@ public class PageConst {
     @Value("${webpage.user_set_show}")
     public void setUserSetShow(String userSetShow) {
         USER_SET_SHOW = userSetShow;
+    }
+    @Value("${webpage.index}")
+    public void setINDEX(String index) {
+        PageConst.INDEX = index;
     }
 }
