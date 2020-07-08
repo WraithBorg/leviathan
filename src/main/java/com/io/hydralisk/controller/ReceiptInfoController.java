@@ -1,15 +1,19 @@
 package com.io.hydralisk.controller;
 
-import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.ReceiptInfoConvert;
 import com.io.hydralisk.domain.ReceiptInfo;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.ReceiptInfoDTO;
+import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.ReceiptInfoService;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.ReceiptInfoVO;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,11 +22,8 @@ import java.util.Map;
 /**
  * 收货地址
  */
-@RequestMapping("/user_address")
 @RestController
 public class ReceiptInfoController {
-
-
     @Resource
     private ReceiptInfoConvert receiptConvert;
     @Resource
@@ -33,59 +34,58 @@ public class ReceiptInfoController {
     /**
      * 查询收货地址列表
      */
-    @GetMapping("/my")
-    public Object userAddress() {
+    @GetMapping("/user_address/my")
+    public MsgResult userAddress() {
         //
         UserInfo defaultUser = userInfoService.getDefaultUser();
         List<ReceiptInfo> receiptInfos = receiptInfoService.selectList(defaultUser.getId());
         List<ReceiptInfoVO> receiptVOS = receiptConvert.getReceiptVOS(receiptInfos);
-        Map data = CCommonUtils.ofMap("list", receiptVOS, "pagelist", false, "rscount", 1, "url", "/index.php?m=user_address&a=default", "dist_list", null);
-        Map rtnData = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pages/user_address/my");
-        return rtnData;
+        Map data = CCommonUtils.ofMap("list", receiptVOS,
+                "pagelist", false,
+                "rscount", receiptVOS.size(),
+                "url", "/index.php?m=user_address&a=default",
+                "dist_list", null);
+        return MsgResult.doneUrl(data, PageConst.ADDRESS_ADD);
     }
 
     /**
      * 点击新增按钮
      */
-    @GetMapping("/add")
-    public Object add(@RequestParam(required = false) String id) {
+    @GetMapping("/user_address/add")
+    public MsgResult add(@RequestParam(required = false) String id) {
         if (CCommonUtils.isBlank(id)) {
             Map data = CCommonUtils.ofMap("data", null);
-            Map rtnData = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pages/user_address/add");
-            return rtnData;
+            return MsgResult.doneUrl(data, PageConst.ADDRESS_ADD);
         }
         ReceiptInfo receiptInfo = receiptInfoService.selectById(id);
         ReceiptInfoVO receiptVO = receiptConvert.getReceiptVO(receiptInfo);
         Map data = CCommonUtils.ofMap("data", receiptVO);
-        Map rtnData = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pages/user_address/add");
-        return rtnData;
-
+        return MsgResult.doneUrl(data, PageConst.ADDRESS_ADD);
     }
 
     /**
      * 保存收货地址
      */
-    @PostMapping("/save")
-    public Object save(ReceiptInfoDTO addressDTO) {
+    @PostMapping("/user_address/save")
+    public MsgResult save(ReceiptInfoDTO addressDTO) {
         if (addressDTO.getId() == null) {
             ReceiptInfo receiptInfo = receiptConvert.getReceiptInfo(addressDTO);
             receiptInfoService.insert(receiptInfo);
             Map data = CCommonUtils.ofMap("data", null);
-            Map rtnData = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pages/user_address/add");
-            return rtnData;
+            return MsgResult.doneUrl(data, PageConst.ADDRESS_ADD);
         }
         ReceiptInfo receiptInfo = receiptConvert.getReceiptInfo(addressDTO);
         receiptInfoService.updateById(receiptInfo);
-
         Map data = CCommonUtils.ofMap("data", null);
-        Map rtnData = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pages/user_address/add");
-        return rtnData;
+        return MsgResult.doneUrl(data, PageConst.ADDRESS_ADD);
     }
-
-    @GetMapping("/delete")
-    public Object delete(@RequestParam(required = false) String id) {
+    /**
+     * 删除收货地址
+     */
+    @GetMapping("/user_address/delete")
+    public MsgResult delete(@RequestParam(required = false) String id) {
         receiptInfoService.deleteById(id);
-        return CCommonUtils.ofMap("error", 0, "message", "删除成功");
+        return MsgResult.doneMsg("删除成功");
     }
 
 }

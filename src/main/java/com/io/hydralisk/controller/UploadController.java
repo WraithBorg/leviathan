@@ -1,27 +1,31 @@
 package com.io.hydralisk.controller;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.mapper.UserInfoMapper;
+import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
-import com.io.hydralisk.vo.ResultVO;
 import com.io.hydralisk.vo.UserPassVO;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Map;
-import java.util.Random;
 import java.util.UUID;
 
-@RequestMapping("/upload")
+/**
+ * 上传附件
+ */
 @RestController
 public class UploadController {
     @Resource
@@ -36,25 +40,25 @@ public class UploadController {
     /**
      * 上传用户头像
      */
-    @PostMapping("/img/user_head")
-    public Object uploadUserHead(@RequestParam("upimg") MultipartFile file) {
+    @PostMapping("/upload/img/user_head")
+    public MsgResult uploadUserHead(@RequestParam("upimg") MultipartFile file) {
         uploadHeadImg(file);
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userPassVO);
-        return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/password");
+        return MsgResult.doneUrl(data, PageConst.USER_PWD_SHOW);
     }
 
     /**
      * 上传用户头像
      */
-    @PostMapping("/img/user_head_save")
-    public Object user_head_save(@RequestParam("upimg") MultipartFile file) {
+    @PostMapping("/upload/img/user_head_save")
+    public MsgResult user_head_save(@RequestParam("upimg") MultipartFile file) {
         uploadHeadImg(file);
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userPassVO);
-        return new ResultVO(data, CConstant.WEB_HOST + "/h5/pages/user/password");
+        return MsgResult.doneUrl(data, PageConst.USER_PWD_SHOW);
     }
 
     /**
@@ -62,7 +66,7 @@ public class UploadController {
      */
     private void uploadHeadImg(@RequestParam("upimg") MultipartFile file) {
         try {
-            String headFileName = UUID.randomUUID().toString()+file.getOriginalFilename();
+            String headFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
             file.transferTo(new File(headFileName));
             copyFile(headFileName);//复制小比例图片
             // TODO 删除旧图片
@@ -84,12 +88,12 @@ public class UploadController {
             fis = new FileInputStream(file);
             byte[] bit = new byte[fis.available()];
             fis.read(bit);
-            File file2 = new File(CConstant.LOCAL_HEAD_PATH + fileName+".100x100.jpg");
+            File file2 = new File(CConstant.LOCAL_HEAD_PATH + fileName + ".100x100.jpg");
             FileOutputStream fos = new FileOutputStream(file2);
             fos.write(bit);
             fis.close();
             fos.close();
-        } catch ( Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -1,18 +1,16 @@
 package com.io.hydralisk.controller;
 
-import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.ShoppingCartItemConvert;
 import com.io.hydralisk.domain.ShopCartItemInfo;
 import com.io.hydralisk.domain.UserInfo;
-import com.io.hydralisk.mapper.ShopCartItemMapper;
+import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.ShopCartItemService;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.util.DDecimalUtil;
-import com.io.hydralisk.vo.ResultVO;
 import com.io.hydralisk.vo.ShopCartItemVO;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +22,6 @@ import java.util.Map;
 /**
  * 购物车
  */
-@RequestMapping("/shoppingcart")
 @RestController
 public class ShopCartController {
     @Resource
@@ -37,31 +34,29 @@ public class ShopCartController {
     /**
      * 获取购物车信息
      */
-    @GetMapping("/b2c_cart/list")
-    public Object b2c_cart() {
+    @GetMapping("/shoppingcart/b2c_cart/list")
+    public MsgResult b2c_cart() {
         Map data = getCommonShopCartInfoList();
-        return new ResultVO(data, CConstant.WEB_HOST + "/h5/pageb2c/b2c_cart/index");
+        MsgResult.doneUrl(data, PageConst.CART_SHOW);
+        return MsgResult.doneUrl(data, PageConst.CART_SHOW);
     }
-
-
 
     /**
      * 加购商品
      */
-    @GetMapping("/b2c_cart/add")
-    public Object b2c_cart(@RequestParam String productid,
-                           @RequestParam String amount,
-                           @RequestParam String ksid
-                           ) {
+    @GetMapping("/shoppingcart/b2c_cart/add")
+    public MsgResult b2c_cart(@RequestParam String productid,
+                              @RequestParam String amount,
+                              @RequestParam String ksid
+    ) {
         UserInfo defaultUser = userInfoService.getDefaultUser();
-        shopCartItemService.addItem(defaultUser.getId(),productid, amount);
+        shopCartItemService.addItem(defaultUser.getId(), productid, amount);
         Map data = getCommonShopCartInfoList();
-        return new ResultVO(data, CConstant.WEB_HOST + "/h5/pageb2c/b2c_cart/index");
+        return MsgResult.doneUrl(data, PageConst.CART_SHOW);
     }
 
     /**
-     * 查询购物车列表 通讯方法
-     * @return
+     * 查询购物车列表 通用方法
      */
     private Map getCommonShopCartInfoList() {
         UserInfo defaultUser = userInfoService.getDefaultUser();

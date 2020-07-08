@@ -11,7 +11,6 @@ import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.KeFuLogService;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.KeFuLogVO;
-import com.io.hydralisk.vo.ResultVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,7 +59,7 @@ public class KeFuController {
         info.setStatus(1);
         info.setContent(keFuLogDTO.getContent());
         keFuLogMapper.insert(info);
-        return new ResultVO(new ArrayList<>(), PageConst.KEFU_INDEX);
+        return MsgResult.doneUrl(new ArrayList<>(), PageConst.KEFU_INDEX);
     }
 
 }
