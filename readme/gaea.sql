@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-07-08 08:54:38
+Date: 2020-07-08 21:09:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,12 +30,12 @@ CREATE TABLE `category_info` (
 -- ----------------------------
 -- Records of category_info
 -- ----------------------------
-INSERT INTO `category_info` VALUES ('21', '福鼎白茶', '0', null);
-INSERT INTO `category_info` VALUES ('22', '白毫银针', '21', 'attach/2020/05/01/75999da99380e67afc3fcade31f475d4.jpg');
-INSERT INTO `category_info` VALUES ('23', '白牡丹', '21', 'attach/2020/05/01/baa60e064a502842b2a5fdabb6c52567.jpg');
-INSERT INTO `category_info` VALUES ('25', '寿眉', '21', 'attach/2020/05/01/e154c74fb2cb59805d85407e294f1a03.jpg');
-INSERT INTO `category_info` VALUES ('26', '茶具', '0', null);
-INSERT INTO `category_info` VALUES ('27', '福鼎小吃', '0', null);
+INSERT INTO `category_info` VALUES ('21', '历史文化', '0', null);
+INSERT INTO `category_info` VALUES ('22', '古籍', '21', 'attach/2020/05/01/75999da99380e67afc3fcade31f475d4.jpg');
+INSERT INTO `category_info` VALUES ('23', '宗教', '21', 'attach/2020/05/01/baa60e064a502842b2a5fdabb6c52567.jpg');
+INSERT INTO `category_info` VALUES ('25', '哲学', '21', 'attach/2020/05/01/e154c74fb2cb59805d85407e294f1a03.jpg');
+INSERT INTO `category_info` VALUES ('26', '文艺', '0', null);
+INSERT INTO `category_info` VALUES ('27', '科技', '0', null);
 
 -- ----------------------------
 -- Table structure for item_img
@@ -81,16 +81,16 @@ CREATE TABLE `item_info` (
 -- ----------------------------
 -- Records of item_info
 -- ----------------------------
-INSERT INTO `item_info` VALUES ('159', '2017年寿眉-C01', '300.0000', '0.1000', '25', '3', null);
-INSERT INTO `item_info` VALUES ('160', '2020白毫银针-A01', '1000.0000', '0.3500', '22', '0', null);
-INSERT INTO `item_info` VALUES ('162', '2018年一级白牡丹', '1500.0000', '0.5000', '23', '123', null);
-INSERT INTO `item_info` VALUES ('163', '2014年贡眉-A01', '3000.0000', '0.3000', '25', '3', null);
-INSERT INTO `item_info` VALUES ('164', '2006年老寿眉-B01', '500.0000', '0.2000', '25', '6', null);
-INSERT INTO `item_info` VALUES ('165', '2012老寿眉-A01', '400.0000', '0.6000', '25', '1', null);
-INSERT INTO `item_info` VALUES ('166', '2018白毫银针-A02', '1000.0000', '0.5000', '22', '3', '<p>2018白毫银针-A02款 很实惠的一款白毫银针</p>');
-INSERT INTO `item_info` VALUES ('167', '2018白牡丹散茶-B01', '300.0000', '0.5000', '23', '12', null);
-INSERT INTO `item_info` VALUES ('168', '2018年牡丹王-A01', '600.0000', '0.3000', '23', '10', null);
-INSERT INTO `item_info` VALUES ('169', '2019年白毫银针-A01', '900.0000', '0.3500', '22', '8', null);
+INSERT INTO `item_info` VALUES ('159', '逻辑思维', '300.0000', '0.1000', '25', '3', null);
+INSERT INTO `item_info` VALUES ('160', '春秋传', '1000.0000', '0.3500', '22', '0', null);
+INSERT INTO `item_info` VALUES ('162', '心经', '1500.0000', '0.5000', '23', '123', null);
+INSERT INTO `item_info` VALUES ('163', '沉思录', '3000.0000', '0.3000', '25', '3', null);
+INSERT INTO `item_info` VALUES ('164', '矛盾论', '500.0000', '0.2000', '25', '6', null);
+INSERT INTO `item_info` VALUES ('165', '厚黑学', '400.0000', '0.6000', '25', '1', null);
+INSERT INTO `item_info` VALUES ('166', '公羊传', '1000.0000', '0.5000', '22', '3', '<p>2018白毫银针-A02款 很实惠的一款白毫银针</p>');
+INSERT INTO `item_info` VALUES ('167', '道德经', '300.0000', '0.5000', '23', '12', null);
+INSERT INTO `item_info` VALUES ('168', '圣经', '600.0000', '0.3000', '23', '10', null);
+INSERT INTO `item_info` VALUES ('169', '列国传', '900.0000', '0.3500', '22', '8', null);
 
 -- ----------------------------
 -- Table structure for kefu_log
@@ -110,6 +110,7 @@ CREATE TABLE `kefu_log` (
 -- ----------------------------
 INSERT INTO `kefu_log` VALUES ('1', '3', '2020-07-07 09:25:11', '1', '有券吗？');
 INSERT INTO `kefu_log` VALUES ('590fecce32391083d0b07115546f6685', '3', '2020-07-07 09:58:11', '1', '有人吗');
+INSERT INTO `kefu_log` VALUES ('72ec9a8e8135ff532a36a96f6d43b686', '3', '2020-07-08 13:01:05', '1', '11');
 
 -- ----------------------------
 -- Table structure for order_bill
@@ -135,7 +136,9 @@ CREATE TABLE `order_bill` (
 -- ----------------------------
 -- Records of order_bill
 -- ----------------------------
-INSERT INTO `order_bill` VALUES ('87e34f6336a14657a9d7ea48570baacb', 'DD2007080844231000', null, '35cc917c744f4f63b7fd580da4d19521', '', '5000.00', '100', '5000.00', '5.00', '0.00', '2020-07-08 08:46:45', '3', '0');
+INSERT INTO `order_bill` VALUES ('13d791f9aa5a439da4e9f08b76668301', 'DD2007082105031000', null, '49d8759c5027401b8f7089fc2d137413', '', '1000.00', '100', '1000.00', '1.00', '0.00', '2020-07-08 21:05:03', '3', '0');
+INSERT INTO `order_bill` VALUES ('9aede27497664e93bb870b46d1dbe963', 'DD2007082050041001', null, '6284503108474b3aa1109d67a4f08ac1', '', '5000.00', '100', '5000.00', '5.00', '0.00', '2020-07-08 20:50:04', '3', '0');
+INSERT INTO `order_bill` VALUES ('e61f150310334b6d8da0f3141cd539be', 'DD2007082057401000', null, '0cf157b64d5d40a58901b77c7b8f63aa', '', '2000.00', '100', '2000.00', '2.00', '0.00', '2020-07-08 20:57:40', '3', '0');
 
 -- ----------------------------
 -- Table structure for order_detail
@@ -159,7 +162,9 @@ CREATE TABLE `order_detail` (
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
-INSERT INTO `order_detail` VALUES ('b8f5d63b5b9cad727eff50c96f585bde', '87e34f6336a14657a9d7ea48570baacb', '166', '2018白毫银针-A02', '1000.00', '5.00', '5000.00', '', '2020-07-08 08:44:23', '3', 'attach/2020/05/06/85.jpg');
+INSERT INTO `order_detail` VALUES ('4318f60e16f523484e1a4cdd43c43ab9', '13d791f9aa5a439da4e9f08b76668301', '166', '公羊传', '1000.00', '1.00', '1000.00', '', '2020-07-08 21:05:03', '3', 'attach/2020/05/06/85.jpg');
+INSERT INTO `order_detail` VALUES ('6edc3b5cc69c1d0f683b6807165c8b1e', 'e61f150310334b6d8da0f3141cd539be', '160', '春秋传', '1000.00', '2.00', '2000.00', '', '2020-07-08 20:57:40', '3', 'attach/2020/04/17/61.jpg');
+INSERT INTO `order_detail` VALUES ('79cd255eef1865f8d49304539dc8c531', '9aede27497664e93bb870b46d1dbe963', '166', '公羊传', '1000.00', '5.00', '5000.00', '', '2020-07-08 20:50:04', '3', 'attach/2020/05/06/85.jpg');
 
 -- ----------------------------
 -- Table structure for order_logistics
@@ -183,7 +188,11 @@ CREATE TABLE `order_logistics` (
 -- ----------------------------
 -- Records of order_logistics
 -- ----------------------------
+INSERT INTO `order_logistics` VALUES ('0cf157b64d5d40a58901b77c7b8f63aa', 'e61f150310334b6d8da0f3141cd539be', null, '王麻', '119', 'AAAA级', '0.00', null, '2020-07-08 20:57:40', '2020-07-08 20:57:40', '101');
 INSERT INTO `order_logistics` VALUES ('35cc917c744f4f63b7fd580da4d19521', '87e34f6336a14657a9d7ea48570baacb', null, '王五', '114', '啊啊啊1号', '0.00', null, '2020-07-08 08:44:23', '2020-07-08 08:44:23', '101');
+INSERT INTO `order_logistics` VALUES ('405f6a863a664a7f8597a60cb7299e49', 'd21f8604ff4841ff9a762f0c6fcdeb1f', null, '王五', '114', '啊啊啊1号', '0.00', null, '2020-07-08 14:29:45', '2020-07-08 14:29:45', '101');
+INSERT INTO `order_logistics` VALUES ('49d8759c5027401b8f7089fc2d137413', '13d791f9aa5a439da4e9f08b76668301', null, '王麻', '119', 'AAAA级', '0.00', null, '2020-07-08 21:05:03', '2020-07-08 21:05:03', '101');
+INSERT INTO `order_logistics` VALUES ('6284503108474b3aa1109d67a4f08ac1', '9aede27497664e93bb870b46d1dbe963', null, '王麻', '119', 'AAAA级', '0.00', null, '2020-07-08 20:50:04', '2020-07-08 20:50:04', '101');
 
 -- ----------------------------
 -- Table structure for receipt_info
@@ -207,7 +216,7 @@ CREATE TABLE `receipt_info` (
 -- Records of receipt_info
 -- ----------------------------
 INSERT INTO `receipt_info` VALUES ('1', '1', '九号楼', '15620606954', '张三三', '', '0', '0', '0', '0');
-INSERT INTO `receipt_info` VALUES ('dfb923600c06f527e4015703c6adb670', '3', '啊啊啊1号', '114', '王五', '', '0', '17', '258', '2812');
+INSERT INTO `receipt_info` VALUES ('651d44bc61e37212e1f369f9d2a42f46', '3', 'AAAA级', '119', '王麻', '', '0', '0', '0', '0');
 INSERT INTO `receipt_info` VALUES ('ec1ef77a92225398d9c5cc45a98bfdc8', '3', '19号', '122', '李四', '', '0', '9', '153', '1902');
 
 -- ----------------------------
@@ -229,7 +238,6 @@ CREATE TABLE `shop_cart_item` (
 -- ----------------------------
 -- Records of shop_cart_item
 -- ----------------------------
-INSERT INTO `shop_cart_item` VALUES ('c91b3eaa94649ded2f85cd584d86c788', '3', '2.00', '3000.00', '2020-07-08 08:52:19', '2014年贡眉-A01', '163', 'attach/2020/05/06/82.jpg');
 
 -- ----------------------------
 -- Table structure for user_fav_item
@@ -245,7 +253,7 @@ CREATE TABLE `user_fav_item` (
 -- ----------------------------
 -- Records of user_fav_item
 -- ----------------------------
-INSERT INTO `user_fav_item` VALUES ('1280334566847729666', '3', '160');
+INSERT INTO `user_fav_item` VALUES ('1280710762852839426', '3', '160');
 
 -- ----------------------------
 -- Table structure for user_info
@@ -264,4 +272,4 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('3', 'ssaab', '110', 'ss', '099b05b8-c433-4374-9a92-e87f5540fc2e下载.jpg', 'aaaaa');
+INSERT INTO `user_info` VALUES ('3', 'ssaab', '110', 'qq', 'upload/f308b4e4-dd77-4a6e-8e37-f722e6b2688a20190705133636_11038.jpg', '123456');
