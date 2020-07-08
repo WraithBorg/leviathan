@@ -59,9 +59,9 @@ public class ItemInfoConvert {
         }
 
         itemInfoVO.setIncart(cartAmount > 0 ? 1 : 0);
-        itemInfoVO.setPrice(itemInfo.getPrice().toEngineeringString());
+        itemInfoVO.setPrice(DDecimalUtil.format(itemInfo.getPrice()));
         itemInfoVO.setTitle(itemInfo.getName());
-        itemInfoVO.setWeight(itemInfo.getWeight().toEngineeringString());
+        itemInfoVO.setWeight(DDecimalUtil.format(itemInfo.getWeight()));
         itemInfoVO.setContent(itemInfo.getContent());
         // DEFAULT
         itemInfoVO.setEtime(0);
@@ -92,7 +92,7 @@ public class ItemInfoConvert {
     }
 
     public List<ItemInfo4IndexVO> getItemInfo4IndexVOS(List<ItemInfo> itemInfos) {
-        List<ItemInfo4IndexVO> itemInfoVOS = itemInfos.stream().map(m -> getItemInfo4IndexVO(m)).collect(Collectors.toList());
+        List<ItemInfo4IndexVO> itemInfoVOS = itemInfos.stream().map(this :: getItemInfo4IndexVO).collect(Collectors.toList());
         return itemInfoVOS;
     }
 
@@ -106,7 +106,7 @@ public class ItemInfoConvert {
             itemInfoVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
         }
 
-        itemInfoVO.setPrice(itemInfo.getPrice().toEngineeringString());
+        itemInfoVO.setPrice(DDecimalUtil.format(itemInfo.getPrice()));
         itemInfoVO.setTitle(itemInfo.getName());
         // DEFAULT
         itemInfoVO.setEtime(0);

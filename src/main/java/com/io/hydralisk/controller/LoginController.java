@@ -75,11 +75,20 @@ public class LoginController {
     /**
      * 登录后获取用户信息
      */
-    @RequestMapping("logined/b2c_user")
+    @GetMapping("logined/b2c_user")
     public MsgResult b2c_user() {
         UserInfo defaultUser = userInfoService.getDefaultUser();
         UserInfoVO userInfoVO = userInfoConvert.getUserVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userInfoVO, "navList", UserMenuVO.getNavList());
         return MsgResult.doneUrl(data,PageConst.USER_INDEX);
+    }
+
+
+    /**
+     * 退出登录
+     */
+    @GetMapping("login/logout")
+    public MsgResult logout() {
+        return MsgResult.done();
     }
 }

@@ -58,6 +58,9 @@ public class MsgResult<T> {
     public static <T> MsgResult<T> done(T data) {
         return new MsgResult<>(data, null, null, MsgResultType.SUCCESS);
     }
+    public static <T> MsgResult<T> doneUrl(String url) {
+        return new MsgResult<>(null, null, null, MsgResultType.SUCCESS);
+    }
     public static <T> MsgResult<T> doneUrl(String message,String url) {
         return new MsgResult<>(null, message, null, MsgResultType.SUCCESS);
     }
