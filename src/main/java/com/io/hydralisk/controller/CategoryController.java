@@ -1,5 +1,6 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.convert.CategoryInfoConvert;
 import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.mapper.CategoryInfoMapper;
@@ -13,7 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/category")
-
+/**
+ * 商品类别
+ */
 @RestController
 public class CategoryController {
     @Resource
@@ -26,7 +29,7 @@ public class CategoryController {
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
 
-        Map  data = CCommonUtils.ofMap("error", 0, "message", "success", "catList", categoryVOS, "url", "http://localhost:8081/h5/pageb2c/b2c_category/index");
+        Map  data = CCommonUtils.ofMap("error", 0, "message", "success", "catList", categoryVOS, "url", CConstant.WEB_HOST  + "/h5/pageb2c/b2c_category/index");
         Map  rtnData = CCommonUtils.ofMap("data", data);
         return rtnData;
     }

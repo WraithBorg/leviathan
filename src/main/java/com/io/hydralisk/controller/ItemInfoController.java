@@ -7,7 +7,10 @@ import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.domain.ItemInfo;
 import com.io.hydralisk.domain.ItemInfoImg;
 import com.io.hydralisk.domain.UserInfo;
-import com.io.hydralisk.mapper.*;
+import com.io.hydralisk.mapper.CategoryInfoMapper;
+import com.io.hydralisk.mapper.ItemInfoImgMapper;
+import com.io.hydralisk.mapper.ItemInfoMapper;
+import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.service.usb.ItemInfoService;
 import com.io.hydralisk.service.usb.UserFavItemService;
 import com.io.hydralisk.util.CCommonUtils;
@@ -44,6 +47,7 @@ public class ItemInfoController {
     private UserFavItemService userFavInfoService;
     @Resource
     private UserInfoMapper userInfoMapper;
+
     /**
      * 商品列表
      */
@@ -78,7 +82,7 @@ public class ItemInfoController {
                 "per_page", 0,
                 "rscount", 3,
                 "url", "/module.php?m=b2c_product&a=list");
-        Map<String, Object> rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", "http://localhost:8081/h5/pageb2c/b2c_product/list?catid=" + catid);
+        Map<String, Object> rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/list?catid=" + catid);
         return rtnMap;
     }
 
@@ -106,7 +110,7 @@ public class ItemInfoController {
                 "catList", categoryVOS,
                 "list", list,
                 "url", "/module.php?m=b2c_product&a=default");
-        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + productid);
+        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + productid);
         return dataMap;
     }
 
@@ -147,7 +151,7 @@ public class ItemInfoController {
                 "pts_num", 0,
                 "sharePic", "https://kfbc.deitui.com//index.php?m=gd&a=ShareProduct&imgurl=https://kfbc-deitui-com.oss-cn-hangzhou.aliyuncs.com/attach/2020/04/17/61.jpg&title=2020%E7%99%BD%E6%AF%AB%E9%93%B6%E9%92%88-A01&price=1000.00&url=https%3A%2F%2Fkfbc.deitui.com%2F%2Fmodule.php%3Fm%3Db2c_product%26a%3Dshow%26id%3D160"
         );
-        Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + id);
+        Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + id);
         return rtnMap;
     }
 
@@ -157,9 +161,10 @@ public class ItemInfoController {
     @RequestMapping("/raty")
     public Object raty(@RequestParam String id, @RequestParam String limit) {
         Map dataMap = CCommonUtils.ofMapN("list", new ArrayList<>(), "productid", id, "rscount", 0);
-        Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + id);
+        Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + id);
         return rtnMap;
     }
+
     /**
      * 相似商品
      */
@@ -184,7 +189,7 @@ public class ItemInfoController {
                 "catList", categoryVOS,
                 "list", list,
                 "url", "/module.php?m=b2c_product&a=default");
-        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST+"/h5/pageb2c/b2c_product/show?id=" + productid);
+        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + productid);
         return dataMap;
     }
 }
