@@ -16,11 +16,11 @@ public class OrderBillConvert {
         vo.setComment(info.getRemark());
         vo.setComment(DDateUtil.format(info.getCreateTime()));
         vo.setGoods_money(DDecimalUtil.format(info.getSumMoney()));
-        vo.setIspay(info.getPayStatus());
+        vo.setIspay(info.getState().equals(OrderState.UN_SEND.id) ? 1 : 0);
         vo.setMoney(DDecimalUtil.format(info.getSumMoney()));
         vo.setOrderid(info.getId());
         vo.setOrderno(info.getOrderNo());
-        vo.setPaytype(PayType.getTtype(info.getPayStatus()));
+        vo.setPaytype(PayType.getTtype(info.getPayType()));
         vo.setPaymoney(DDecimalUtil.format(info.getPayMoney()));
         vo.setTotal_num(info.getItemAmountTotal());
         vo.setUser_address_id("TODO ADDRESS_ID");
@@ -28,7 +28,7 @@ public class OrderBillConvert {
 
         vo.setExpress_money(DDecimalUtil.format(info.getFreight()));
         vo.setStatus_name(OrderState.getText(info.getState()));
-        vo.setStatus(info.getPayStatus());
+        vo.setStatus(info.getState());
         return vo;
     }
 }

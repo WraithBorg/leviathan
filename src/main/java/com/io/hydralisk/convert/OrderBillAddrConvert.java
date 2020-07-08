@@ -11,7 +11,7 @@ public class OrderBillAddrConvert {
         OrderBillAddrVO vo = new OrderBillAddrVO();
         vo.setAddress(info.getCneeAddress());
         vo.setTruename(info.getCneeRealName());
-        vo.setTruename(info.getCneeTelephone());
+        vo.setTelephone(info.getCneeTelephone());
         return vo;
 
     }

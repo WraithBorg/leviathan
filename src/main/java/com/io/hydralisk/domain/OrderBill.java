@@ -33,8 +33,7 @@ public class OrderBill {
     private BigDecimal itemAmountTotal;//订单商品数量合计
     @TableField(value = t.freight)
     private BigDecimal freight;//运费
-    @TableField(value = t.pay_status)
-    private Integer payStatus;//支付状态
+
     @TableField(value = t.create_time)
     private Date createTime;//创建时间
     @TableField(value = t.user_id)
@@ -139,13 +138,6 @@ public class OrderBill {
         this.freight = freight;
     }
 
-    public Integer getPayStatus() {
-        return payStatus;
-    }
-
-    public void setPayStatus(Integer payStatus) {
-        this.payStatus = payStatus;
-    }
 
     public String getTradeNo() {
         return tradeNo;

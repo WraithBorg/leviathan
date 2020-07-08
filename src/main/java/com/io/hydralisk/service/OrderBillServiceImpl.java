@@ -9,6 +9,7 @@ import com.io.hydralisk.eum.PayType;
 import com.io.hydralisk.mapper.*;
 import com.io.hydralisk.service.usb.OrderBillService;
 import com.io.hydralisk.util.BillNoUtil;
+import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.util.DDecimalUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,7 +64,6 @@ public class OrderBillServiceImpl implements OrderBillService {
         orderBill.setPayMoney(DDecimalUtil.setScale(sumMoney));
         orderBill.setItemAmountTotal(DDecimalUtil.setScale(totalAmount));
         orderBill.setFreight(BigDecimal.ZERO);// TODO
-        orderBill.setPayStatus(OrderState.UN_PAY.id);
         orderBill.setUserId(defaultUser.getId());
         orderBill.setState(OrderState.UN_PAY.id);
         billMapper.insert(orderBill);
@@ -121,7 +121,15 @@ public class OrderBillServiceImpl implements OrderBillService {
         OrderBill orderBill = billMapper.selectById(id);
         orderBill.setState(OrderState.CANCELLED.id);
         billMapper.updateById(orderBill);
-//        logisticsMapper.deleteByMap(CCommonUtils.ofMap(OrderLogistics.t.order_id,id));// TODO
-//        detailMapper.deleteByMap(CCommonUtils.ofMap(OrderLogistics.t.order_id,id));// TODO
+    }
+
+    @Override
+    public void clearOrder(String id) {
+        OrderBill orderBill = billMapper.selectById(id);
+        if (orderBill.getState().equals(OrderState.CANCELLED.id)) {
+            billMapper.deleteById(id);
+            logisticsMapper.deleteByMap(CCommonUtils.ofMap(OrderLogistics.t.order_id, id));
+            detailMapper.deleteByMap(CCommonUtils.ofMap(OrderLogistics.t.order_id, id));
+        }
     }
 }

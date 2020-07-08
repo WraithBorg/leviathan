@@ -119,6 +119,7 @@ public class OrderBillController {
     @GetMapping("/showdetails")
     public Object showDetail(String orderid){
         ShowOrderGroupVO showOrderGroup = showOrderGroupConvert.getShowOrderGroup(orderid);
+        orderBillService.clearOrder(orderid);
         return new ResultVO(showOrderGroup, CConstant.WEB_HOST + "/h5/pageb2c/b2c_order/show?orderid="+orderid);
     }
     /**

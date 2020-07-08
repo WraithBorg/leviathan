@@ -18,4 +18,8 @@ public interface OrderBillService {
      * 取消订单
      */
     void cancelOrder(String id);
+    /**
+     * 清除已取消订单
+     */
+    void clearOrder(String orderid);
 }
