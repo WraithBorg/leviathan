@@ -16,6 +16,9 @@ public class PageConst {
     public static final String MY_NOTICE = WEB_HOST+ "/h5/pages/notice/my";//我的消息页面
     public static final String MY_PAY_LOG = WEB_HOST+ "/h5/pages/pay_log/my";//消费记录
     public static final String RECHARGE_LOG = WEB_HOST+ "/h5/pages/recharge/my";//充值记录
+    public static final String ORDER_CONFIRM = WEB_HOST+ "/h5/pageb2c/b2c_order/confirm";//订单确认页面
+    public static final String ORDER_LIST = WEB_HOST+ "/h5/pageb2c/b2c_order/my";//订单列表页面
+    public static final String ORDER_DETAIL_SHOW = WEB_HOST+ "/h5/pageb2c/b2c_order/show?orderid=";//订单详情页面
 
 
 

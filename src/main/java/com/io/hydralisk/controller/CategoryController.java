@@ -15,7 +15,6 @@ import java.util.List;
 /**
  * 商品类别
  */
-@RequestMapping("/category")
 @RestController
 public class CategoryController {
     @Resource
@@ -26,7 +25,7 @@ public class CategoryController {
     /**
      * 查询品项类别树
      */
-    @RequestMapping("/b2c_category_tree")
+    @RequestMapping("/category/b2c_category_tree")
     public MsgResult b2c_category() {
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
