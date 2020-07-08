@@ -1,6 +1,7 @@
 package com.io.hydralisk.controller;
 
 import com.io.hydralisk.constant.CConstant;
+import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.CategoryInfoConvert;
 import com.io.hydralisk.convert.ItemInfoConvert;
 import com.io.hydralisk.domain.CategoryInfo;
@@ -11,8 +12,10 @@ import com.io.hydralisk.mapper.CategoryInfoMapper;
 import com.io.hydralisk.mapper.ItemInfoImgMapper;
 import com.io.hydralisk.mapper.ItemInfoMapper;
 import com.io.hydralisk.mapper.UserInfoMapper;
+import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.ItemInfoService;
 import com.io.hydralisk.service.usb.UserFavItemService;
+import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
 import com.io.hydralisk.vo.CategoryVO;
 import com.io.hydralisk.vo.ItemInfoVO;
@@ -26,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@RequestMapping("item/b2c_product")
 @RestController
 public class ItemInfoController {
     @Resource
@@ -51,9 +53,9 @@ public class ItemInfoController {
     /**
      * 商品列表
      */
-    @RequestMapping("/list")
-    public Object list(@RequestParam(required = false) String orderby,
-                       @RequestParam(required = false) String catid) {
+    @RequestMapping("item/b2c_product/list")
+    public MsgResult list(@RequestParam(required = false) String orderby,
+                          @RequestParam(required = false) String catid) {
         List<ItemInfo> itemInfos;
 
         // category
@@ -80,17 +82,16 @@ public class ItemInfoController {
                 "list", list,
                 "pagelist", false,
                 "per_page", 0,
-                "rscount", 3,
-                "url", "/module.php?m=b2c_product&a=list");
-        Map<String, Object> rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/list?catid=" + catid);
-        return rtnMap;
+                "rscount", 0
+        );
+        return MsgResult.doneUrl(data, PageConst.PRODUCT_LIST_4CATEGORY + catid);
     }
 
     /**
      * 相似商品
      */
-    @RequestMapping("/likelist")
-    public Object likelist(@RequestParam String productid) {
+    @RequestMapping("item/b2c_product/likelist")
+    public MsgResult likelist(@RequestParam String productid) {
         //
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
@@ -104,21 +105,19 @@ public class ItemInfoController {
         });
         List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
         Map data = CCommonUtils.ofMapN(
-                "rscount", 11,
+                "rscount", 0,
                 "per_page", 0,
                 "pagelist", false,
                 "catList", categoryVOS,
-                "list", list,
-                "url", "/module.php?m=b2c_product&a=default");
-        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + productid);
-        return dataMap;
+                "list", list);
+        return MsgResult.doneUrl(data,PageConst.PRODUCT_SHOW + productid);
     }
 
     /**
      * 显示商品
      */
-    @RequestMapping("/show")
-    public Object show(@RequestParam String id, @RequestParam String orderid) {
+    @RequestMapping("item/b2c_product/show")
+    public MsgResult show(@RequestParam String id, @RequestParam String orderid) {
 
         ItemInfo itemInfo = infoService.getItemWithImg(id);
         ItemInfoVO itemInfoVO = itemInfoConvert.getItemInfoVO(itemInfo);
@@ -128,14 +127,11 @@ public class ItemInfoController {
             if (CCommonUtils.isBlank(m.getUrl())) {
                 return null;
             }
-            String defautlImg = CConstant.IMAGE_HOST + m.getUrl();
-
-            return defautlImg;
+            return CConstant.IMAGE_HOST + m.getUrl();
         }).collect(Collectors.toList());
         // 查看是否该商品是否在收藏夹里
         UserInfo defaultUser = userInfoMapper.getDefaultUser();
         Integer hasFav = userFavInfoService.hasFav(defaultUser.getId(), itemInfo.getId());
-
 
         Map dataMap = CCommonUtils.ofMapN(
                 "cart_amount", itemInfoVO.getCart_amount(),
@@ -149,27 +145,37 @@ public class ItemInfoController {
                 "order", false,
                 "pts", false,
                 "pts_num", 0,
-                "sharePic", "https://kfbc.deitui.com//index.php?m=gd&a=ShareProduct&imgurl=https://kfbc-deitui-com.oss-cn-hangzhou.aliyuncs.com/attach/2020/04/17/61.jpg&title=2020%E7%99%BD%E6%AF%AB%E9%93%B6%E9%92%88-A01&price=1000.00&url=https%3A%2F%2Fkfbc.deitui.com%2F%2Fmodule.php%3Fm%3Db2c_product%26a%3Dshow%26id%3D160"
+                "sharePic",
+                ""
         );
-        Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + id);
-        return rtnMap;
+        return MsgResult.doneUrl(dataMap,PageConst.PRODUCT_SHOW+ id);
     }
 
     /**
+     * 商品评价列表
      * Raty
      */
-    @RequestMapping("/raty")
-    public Object raty(@RequestParam String id, @RequestParam String limit) {
-        Map dataMap = CCommonUtils.ofMapN("list", new ArrayList<>(), "productid", id, "rscount", 0);
-        Map rtnMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", dataMap, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + id);
-        return rtnMap;
+    @RequestMapping("item/b2c_product/raty")
+    public MsgResult raty(@RequestParam String id, @RequestParam String limit) {
+        ArrayList<Object> list = new ArrayList<>();
+        UserInfo userInfo = userInfoMapper.getDefaultUser();
+        list.add(CCommonUtils.ofMap("user_head", CConstant.DEFAULT_HEAD_URL +userInfo.getHeadImgUrl(),
+                "nickname", "张三",
+                "raty_grade", "3",
+                "raty_content", "这玩意真好" ));
+        list.add(CCommonUtils.ofMap("user_head", CConstant.DEFAULT_HEAD_URL +userInfo.getHeadImgUrl(),
+                "nickname", "李四",
+                "raty_grade", "3",
+                "raty_content", "这玩意真垃圾" ));
+        Map dataMap = CCommonUtils.ofMapN("list", list, "productid", id, "rscount", 2);
+        return  MsgResult.doneUrl(dataMap,PageConst.PRODUCT_SHOW+ id);
     }
 
     /**
      * 相似商品
      */
-    @RequestMapping("/reclist")
-    public Object reclist(@RequestParam String productid) {
+    @RequestMapping("item/b2c_product/reclist")
+    public MsgResult reclist(@RequestParam String productid) {
         //
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
@@ -183,13 +189,11 @@ public class ItemInfoController {
         });
         List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
         Map data = CCommonUtils.ofMapN(
-                "rscount", 11,
+                "rscount", list.size(),
                 "per_page", 0,
                 "pagelist", false,
                 "catList", categoryVOS,
-                "list", list,
-                "url", "/module.php?m=b2c_product&a=default");
-        Map dataMap = CCommonUtils.ofMap("error", 0, "message", "success", "data", data, "url", CConstant.WEB_HOST + "/h5/pageb2c/b2c_product/show?id=" + productid);
-        return dataMap;
+                "list", list);
+        return MsgResult.doneUrl(data,PageConst.PRODUCT_SHOW+ productid);
     }
 }
