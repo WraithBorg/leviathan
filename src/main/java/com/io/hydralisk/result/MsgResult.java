@@ -48,13 +48,18 @@ public class MsgResult<T> {
     public static <T> MsgResult<T> fail(String message, String[] args, T data) {
         return new MsgResult<>(data, message, args, MsgResultType.ERROR);
     }
-
+    public static MsgResult doneMsg(String  message) {
+        return new MsgResult (null, message, null, MsgResultType.SUCCESS);
+    }
     public static <T> MsgResult<T> done() {
         return new MsgResult<>(null, null, null, MsgResultType.SUCCESS);
     }
 
     public static <T> MsgResult<T> done(T data) {
         return new MsgResult<>(data, null, null, MsgResultType.SUCCESS);
+    }
+    public static <T> MsgResult<T> doneUrl(String message,String url) {
+        return new MsgResult<>(null, message, null, MsgResultType.SUCCESS);
     }
     public static <T> MsgResult<T> doneUrl(T data,String url) {
         return new MsgResult<>(data, null, null, MsgResultType.SUCCESS);
