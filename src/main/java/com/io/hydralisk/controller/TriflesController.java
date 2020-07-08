@@ -11,13 +11,12 @@ import javax.annotation.Resource;
 /**
  * insignificance trifles
  */
-@RequestMapping("/trifles")
 @RestController
 public class TriflesController {
     @Resource
     private AboutUsVO aboutUsVO;
 
-    @RequestMapping("/aboutus")
+    @RequestMapping("/trifles/aboutus")
     public MsgResult aboutus() {
         return MsgResult.doneUrl(aboutUsVO, PageConst.ABOUT_US);
     }

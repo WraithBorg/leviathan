@@ -33,7 +33,7 @@ public class MsgResult<T> {
     public MsgResult(T data, String message, String[] args, MsgResultType type,String url) {
         this.data = data;
         this.type = type;
-        this.url = url;
+        this.url = PageConst.WEB_HOST + url;
         setMessage(message, args);
     }
 

@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 /**
  * 跨域全局解决方案
  */
@@ -24,10 +23,10 @@ public class CorsConfig {
         configuration.addAllowedHeader("*");//放行哪些原始域（头部信息）
 //        configuration.addExposedHeader("*");//暴露哪些头部信息（因为跨域访问不能暴露全部头部信息）
         configuration.addExposedHeader("Content-Type");
-        configuration.addExposedHeader( "X-Requested-With");
+        configuration.addExposedHeader("X-Requested-With");
         configuration.addExposedHeader("accept");
         configuration.addExposedHeader("Origin");
-        configuration.addExposedHeader( "Access-Control-Request-Method");
+        configuration.addExposedHeader("Access-Control-Request-Method");
         configuration.addExposedHeader("Access-Control-Request-Headers");
         // 2. 添加映射路径
         UrlBasedCorsConfigurationSource configurationSource = new UrlBasedCorsConfigurationSource();

@@ -29,6 +29,7 @@ public class CategoryController {
     public MsgResult b2c_category() {
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
+        System.out.println(PageConst.WEB_HOST);
         return MsgResult.doneUrl("catList", categoryVOS, PageConst.CATEGORY_INDEX);
     }
 }
