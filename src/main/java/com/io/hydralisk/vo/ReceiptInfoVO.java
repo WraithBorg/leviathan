@@ -153,25 +153,4 @@ public class ReceiptInfoVO {
         this.lng = lng;
     }
 
-    public static ReceiptInfoVO getDefault() {
-        ReceiptInfoVO receiptInfoVO = new ReceiptInfoVO();
-        receiptInfoVO.setId("55");
-        receiptInfoVO.setUserid("136");
-        receiptInfoVO.setAddress("九号楼");
-        receiptInfoVO.setTelephone(CConstant.DEFAULT_TELEPHONE);
-        receiptInfoVO.setTruename("张三");
-        receiptInfoVO.setStatus(2);
-        receiptInfoVO.setZip_code("");
-        receiptInfoVO.setLastid(0);
-        receiptInfoVO.setProvince_id(1);
-        receiptInfoVO.setCity_id(37);
-        receiptInfoVO.setTown_id(567);
-        receiptInfoVO.setIsdefault(0);
-        receiptInfoVO.setDateline(new Date());
-        receiptInfoVO.setPct_address("北京市东城区东华门街道11号楼");
-        receiptInfoVO.setLat("39.918922");
-        receiptInfoVO.setLng("116.412224");
-        return receiptInfoVO;
-
-    }
 }

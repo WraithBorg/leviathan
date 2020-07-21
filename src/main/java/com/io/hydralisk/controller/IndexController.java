@@ -1,20 +1,24 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.annotate.WithoutLogin;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.CategoryInfoConvert;
 import com.io.hydralisk.convert.ItemInfoConvert;
 import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.domain.ItemInfo;
+import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.mapper.CategoryInfoMapper;
 import com.io.hydralisk.mapper.ItemInfoMapper;
 import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.ItemInfoService;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +30,8 @@ import java.util.stream.Stream;
  */
 @RestController
 public class IndexController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     @Resource
     private ItemInfoService itemInfoService;
     @Resource
@@ -39,8 +45,10 @@ public class IndexController {
     /**
      * 首页查询信息集合
      */
+    @WithoutLogin
     @GetMapping("b2c/indexpage")
     public MsgResult indexpage() {
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
         List adList = new ArrayList<>();
         List<ItemInfo> itemInfos = itemInfoService.selectListWithImg(itemInfoMapper.selectBiMaiList());
         // 必买好货
@@ -48,7 +56,7 @@ public class IndexController {
         // 首页轮播图
         List<Flash4IndexVO> flashList = Stream.of(new Flash4IndexVO()).collect(Collectors.toList());
         // 热销商品
-        List<ItemInfoVO> hotList = itemInfoConvert.getItemInfoVOS( itemInfoMapper.selectHotSaleList());
+        List<ItemInfoVO> hotList = itemInfoConvert.getItemInfoVOS( currentUser,itemInfoMapper.selectHotSaleList());
         // 热销商品类型
         List<CategoryInfo> categoryInfos = categoryMapper.getCats4Index();
         List<Category4IndexVO> navList = categoryInfoConvert.getCategory4IndexVOS(categoryInfos);

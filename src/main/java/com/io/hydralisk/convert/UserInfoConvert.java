@@ -29,7 +29,7 @@ public class UserInfoConvert {
         vo.setMoney("0.00");
         vo.setNickname(userInfo.getNickName());
         vo.setStatus(10);
-        vo.setTelephone(CConstant.DEFAULT_TELEPHONE);
+        vo.setTelephone(userInfo.getTelePhone());
         vo.setUser_head(PageConst.IMG_PATH +userInfo.getHeadImgUrl());
         vo.setUser_type(1);
         vo.setUserid(userInfo.getId());

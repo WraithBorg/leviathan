@@ -29,20 +29,24 @@ public class ItemInfoConvert {
     @Resource
     private UserInfoService userInfoService;
 
-    public List<ItemInfoVO> getItemInfoVOS(List<ItemInfo> itemInfos) {
-        List<ItemInfoVO> itemInfoVOS = itemInfos.stream().map(this::getItemInfoVO).collect(Collectors.toList());
+    public List<ItemInfoVO> getItemInfoVOS(UserInfo currentUser,List<ItemInfo> itemInfos) {
+        List<ItemInfoVO> itemInfoVOS = itemInfos.stream().map(m -> getItemInfoVO(currentUser,m)).collect(Collectors.toList());
         return itemInfoVOS;
     }
 
-    public ItemInfoVO getItemInfoVO(ItemInfo itemInfo) {
-        UserInfo defaultUser = userInfoService.getDefaultUser();
-        ShopCartItemInfo cartItemInfo = shopCartItemMapper.getByUserItem(itemInfo.getId(), defaultUser.getId());
+    public ItemInfoVO getItemInfoVO(UserInfo currentUser,ItemInfo itemInfo) {
         Integer cartAmount;
-        if (cartItemInfo == null) {
+        if (currentUser == null){
             cartAmount = 0;
-        } else {
-            cartAmount = DDecimalUtil.toInt(cartItemInfo.getAmount());
+        }else {
+            ShopCartItemInfo cartItemInfo = shopCartItemMapper.getByUserItem(itemInfo.getId(), currentUser.getId());
+            if(cartItemInfo == null){
+                cartAmount = 0;
+            }else {
+                cartAmount = DDecimalUtil.toInt(cartItemInfo.getAmount());
+            }
         }
+
         //
         ItemInfoVO itemInfoVO = new ItemInfoVO();
         itemInfoVO.setBuy_num(itemInfo.getBuyNum());

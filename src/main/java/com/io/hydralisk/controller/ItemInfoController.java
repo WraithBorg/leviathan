@@ -1,5 +1,6 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.annotate.WithoutLogin;
 import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.CategoryInfoConvert;
@@ -17,6 +18,7 @@ import com.io.hydralisk.service.usb.ItemInfoService;
 import com.io.hydralisk.service.usb.UserFavItemService;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.CategoryVO;
 import com.io.hydralisk.vo.ItemInfoVO;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +34,8 @@ import java.util.stream.Collectors;
 
 @RestController
 public class ItemInfoController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     @Resource
     private ItemInfoMapper itemInfoMapper;
     @Resource
@@ -51,12 +56,16 @@ public class ItemInfoController {
     private UserInfoMapper userInfoMapper;
     @Resource
     private ItemInfoService itemInfoService;
+
     /**
      * 商品列表
      */
+    @WithoutLogin
     @RequestMapping("item/b2c_product/list")
     public MsgResult list(@RequestParam(required = false) String orderby,
                           @RequestParam(required = false) String catid) {
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
+
         List<ItemInfo> itemInfos;
 
         // category
@@ -74,7 +83,7 @@ public class ItemInfoController {
                 m.setDefaultImg(itemInfoImgs.get(0).getUrl());
             }
         });
-        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
+        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(currentUser,itemInfos);
 
         // category
         Map data = CCommonUtils.ofMapN(
@@ -91,42 +100,50 @@ public class ItemInfoController {
     /**
      * 相似商品
      */
+    @WithoutLogin
     @RequestMapping("item/b2c_product/likelist")
     public MsgResult likelist(@RequestParam String productid) {
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
         //
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
         //
         List<ItemInfo> itemInfos = itemInfoService.selectListWithImg();
-        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
+        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(currentUser,itemInfos);
         Map data = CCommonUtils.ofMapN(
                 "rscount", 0,
                 "per_page", 0,
                 "pagelist", false,
                 "catList", categoryVOS,
                 "list", list);
-        return MsgResult.doneUrl(data,PageConst.PRODUCT_SHOW + productid);
+        return MsgResult.doneUrl(data, PageConst.PRODUCT_SHOW + productid);
     }
 
     /**
      * 显示商品
      */
+    @WithoutLogin
     @RequestMapping("item/b2c_product/show")
     public MsgResult show(@RequestParam String id, @RequestParam String orderid) {
-
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
         ItemInfo itemInfo = infoService.getItemWithImg(id);
-        ItemInfoVO itemInfoVO = itemInfoConvert.getItemInfoVO(itemInfo);
+        ItemInfoVO itemInfoVO = itemInfoConvert.getItemInfoVO(currentUser,itemInfo);
 
         List<ItemInfoImg> itemInfoImgs = itemInfoImgMapper.selectByMap(CCommonUtils.ofMap(ItemInfoImg.t.item_id, id));
         List<String> imgsdata = itemInfoImgs.stream().map(m -> {
             if (CCommonUtils.isBlank(m.getUrl())) {
                 return null;
             }
-            return  PageConst.IMG_PATH + "static/index_flash_01.png";
+            return PageConst.IMG_PATH + "static/index_flash_01.png";
         }).collect(Collectors.toList());
         // 查看是否该商品是否在收藏夹里
-        UserInfo defaultUser = userInfoMapper.getDefaultUser();
-        Integer hasFav = userFavInfoService.hasFav(defaultUser.getId(), itemInfo.getId());
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
+        Integer hasFav;
+        if(defaultUser == null){
+            hasFav = 0;
+        }else {
+            hasFav = userFavInfoService.hasFav(defaultUser.getId(), itemInfo.getId());
+        }
 
         Map dataMap = CCommonUtils.ofMapN(
                 "cart_amount", itemInfoVO.getCart_amount(),
@@ -143,46 +160,49 @@ public class ItemInfoController {
                 "sharePic",
                 ""
         );
-        return MsgResult.doneUrl(dataMap,PageConst.PRODUCT_SHOW+ id);
+        return MsgResult.doneUrl(dataMap, PageConst.PRODUCT_SHOW + id);
     }
 
     /**
      * 商品评价列表
      * Raty
      */
+    @WithoutLogin
     @RequestMapping("item/b2c_product/raty")
     public MsgResult raty(@RequestParam String id, @RequestParam String limit) {
         ArrayList<Object> list = new ArrayList<>();
-        UserInfo userInfo = userInfoMapper.getDefaultUser();
-        list.add(CCommonUtils.ofMap("user_head", PageConst.IMG_PATH +userInfo.getHeadImgUrl(),
+//        UserInfo userInfo = SessionUtil.getCurrentUser(httpServletRequest);
+        list.add(CCommonUtils.ofMap("user_head", PageConst.IMG_PATH + "userInfo.getHeadImgUrl()",
                 "nickname", "张三",
                 "raty_grade", "3",
-                "raty_content", "这玩意真好" ));
-        list.add(CCommonUtils.ofMap("user_head", PageConst.IMG_PATH +userInfo.getHeadImgUrl(),
+                "raty_content", "这玩意真好"));
+        list.add(CCommonUtils.ofMap("user_head", PageConst.IMG_PATH + ":userInfo.getHeadImgUrl()",
                 "nickname", "李四",
                 "raty_grade", "3",
-                "raty_content", "这玩意真垃圾" ));
+                "raty_content", "这玩意真垃圾"));
         Map dataMap = CCommonUtils.ofMapN("list", list, "productid", id, "rscount", 2);
-        return  MsgResult.doneUrl(dataMap,PageConst.PRODUCT_SHOW+ id);
+        return MsgResult.doneUrl(dataMap, PageConst.PRODUCT_SHOW + id);
     }
 
     /**
      * 相似商品
      */
+    @WithoutLogin
     @RequestMapping("item/b2c_product/reclist")
     public MsgResult reclist(@RequestParam String productid) {
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
         //
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);
         List<CategoryVO> categoryVOS = categoryInfoConvert.getCategoryVOS(categoryInfos);
         //
         List<ItemInfo> itemInfos = itemInfoService.selectListWithImg();
-        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(itemInfos);
+        List<ItemInfoVO> list = itemInfoConvert.getItemInfoVOS(currentUser,itemInfos);
         Map data = CCommonUtils.ofMapN(
                 "rscount", list.size(),
                 "per_page", 0,
                 "pagelist", false,
                 "catList", categoryVOS,
                 "list", list);
-        return MsgResult.doneUrl(data,PageConst.PRODUCT_SHOW+ productid);
+        return MsgResult.doneUrl(data, PageConst.PRODUCT_SHOW + productid);
     }
 }

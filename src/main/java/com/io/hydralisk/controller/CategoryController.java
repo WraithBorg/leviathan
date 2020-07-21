@@ -1,5 +1,6 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.annotate.WithoutLogin;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.CategoryInfoConvert;
 import com.io.hydralisk.domain.CategoryInfo;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -18,6 +20,8 @@ import java.util.List;
 @RestController
 public class CategoryController {
     @Resource
+    private HttpServletRequest httpServletRequest;
+    @Resource
     private CategoryInfoMapper categoryMapper;
     @Resource
     private CategoryInfoConvert categoryInfoConvert;
@@ -25,6 +29,7 @@ public class CategoryController {
     /**
      * 查询品项类别树
      */
+    @WithoutLogin
     @RequestMapping("/category/b2c_category_tree")
     public MsgResult b2c_category() {
         List<CategoryInfo> categoryInfos = categoryMapper.selectList(null);

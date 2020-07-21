@@ -10,12 +10,14 @@ import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.KeFuLogService;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.KeFuLogVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +29,8 @@ import java.util.Map;
 
 @RestController
 public class KeFuController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     @Resource
     private KeFuLogConvert keFuLogConvert;
     @Resource
@@ -41,7 +45,8 @@ public class KeFuController {
      */
     @GetMapping("/kefu/mykefu")
     public MsgResult mykefu() {
-        List<KeFuLogInfo> list = keFuLogService.getMyLog();
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
+        List<KeFuLogInfo> list = keFuLogService.getMyLog(currentUser);
         List<KeFuLogVO> vos = keFuLogConvert.getKeFuLogVOS(list);
         Map data = CCommonUtils.ofMap("list", vos);
         return MsgResult.doneUrl(data, PageConst.KEFU_INDEX);
@@ -52,9 +57,9 @@ public class KeFuController {
      */
     @PostMapping("/kefu/savelog")
     public Object MsgResult(KeFuLogDTO keFuLogDTO) {
-        UserInfo defaultUser = userInfoMapper.getDefaultUser();
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
         KeFuLogInfo info = new KeFuLogInfo();
-        info.setUserId(defaultUser.getId());
+        info.setUserId(currentUser.getId());
         info.setCreateTime(new Date());
         info.setStatus(1);
         info.setContent(keFuLogDTO.getContent());

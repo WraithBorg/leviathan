@@ -41,9 +41,8 @@ public class OrderBillServiceImpl implements OrderBillService {
      * 创建订单
      */
     @Override
-    public void createOrder(CreateOrderDTO dto) {
+    public void createOrder(UserInfo currentUser,CreateOrderDTO dto) {
 
-        UserInfo defaultUser = userInfoMapper.getDefaultUser();
         // Prepared
         List<String> cartIds = dto.getCartid();
         List<ShopCartItemInfo> cartItemInfos = cartIds.stream().map(s -> shopCartItemMapper.selectById(s)).collect(Collectors.toList());
@@ -64,13 +63,13 @@ public class OrderBillServiceImpl implements OrderBillService {
         orderBill.setPayMoney(DDecimalUtil.setScale(sumMoney));
         orderBill.setItemAmountTotal(DDecimalUtil.setScale(totalAmount));
         orderBill.setFreight(BigDecimal.ZERO);// TODO
-        orderBill.setUserId(defaultUser.getId());
+        orderBill.setUserId(currentUser.getId());
         orderBill.setState(OrderState.UN_PAY.id);
         billMapper.insert(orderBill);
         // Install Detail And Save
         for (ShopCartItemInfo info : cartItemInfos) {
             OrderDetail dt = new OrderDetail();
-            dt.setUserId(defaultUser.getId());
+            dt.setUserId(currentUser.getId());
             dt.setCreateTime(new Date());
             dt.setOrderId(billId);
             dt.setItemId(info.getItemId());

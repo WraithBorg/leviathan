@@ -29,9 +29,8 @@ public class ReceiptInfoServiceImpl implements ReceiptInfoService {
     }
 
     @Override
-    public void insert(ReceiptInfo receiptInfo) {
-        UserInfo defaultUser = userInfoService.getDefaultUser();
-        receiptInfo.setUserId(defaultUser.getId());
+    public void insert(UserInfo currentUser,ReceiptInfo receiptInfo) {
+        receiptInfo.setUserId(currentUser.getId());
         receiptInfoMapper.insert(receiptInfo);
     }
 

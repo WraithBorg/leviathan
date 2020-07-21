@@ -19,9 +19,8 @@ public class KeFuLogServiceImpl implements KeFuLogService {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public List<KeFuLogInfo> getMyLog() {
-        UserInfo defaultUser = userInfoMapper.getDefaultUser();
-        List<KeFuLogInfo> keFuLogInfos = keFuLogMapper.selectByMap(CCommonUtils.ofMap(KeFuLogInfo.t.user_id, defaultUser.getId()));
+    public List<KeFuLogInfo> getMyLog(UserInfo currentUser) {
+        List<KeFuLogInfo> keFuLogInfos = keFuLogMapper.selectByMap(CCommonUtils.ofMap(KeFuLogInfo.t.user_id, currentUser.getId()));
         return keFuLogInfos;
     }
 }

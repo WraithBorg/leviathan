@@ -1,9 +1,12 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.annotate.WithoutLogin;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.LoginDTO;
+import com.io.hydralisk.security.JwtUtil;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.UserMenuVO;
 import com.io.hydralisk.dto.RegisterDTO;
 import com.io.hydralisk.mapper.UserInfoMapper;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +33,8 @@ import java.util.Map;
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Resource
+    private HttpServletRequest httpServletRequest;
+    @Resource
     private UserInfoMapper userInfoMapper;
     @Resource
     private UserInfoService userInfoService;
@@ -37,6 +43,7 @@ public class LoginController {
     /**
      * 用户登录
      */
+    @WithoutLogin
     @PostMapping("/login/loginsave")
     public MsgResult loginsave(LoginDTO loginDTO) {
         // validate
@@ -50,8 +57,12 @@ public class LoginController {
             return MsgResult.fail("密码错误");
         }
         //
-        Map<String, String> data = CCommonUtils.ofMap("authcode", "12JTddcCbJ6T2Iby6d3SeUcy5M8i5U5z2Q1TdEzNiUyQyUyMnAlMjIlM0ElMjI0ODE2ZWIlMjIlMkMlMjJhJTIyJTNBJTIyNWViYiUyMiUyQyUyMmUlMjIlM0ExNTk0MDQzMDcyJTdE", "authcodeLong", "12JTddcCbJ6T2Iby6d3SeUcy5M8i5U5z2Q1TdEzNiUyQyUyMnAlMjIlM0ElMjI0ODE2ZWIlMjIlMkMlMjJhJTIyJTNBJTIyNWViYiUyMiUyQyUyMmUlMjIlM0ExNTk0MDQzMDcyJTJDJTIyZWwlMjIlM0ExNjE5NzkwMjcyJTdE", "backurl", "\\/index.php");
-        return MsgResult.doneUrl(data, PageConst.INDEX_PAGE);
+        String jwtToken = JwtUtil.createJWT(1000 * 60, userInfo);
+        Map<String, String> data = CCommonUtils.ofMap(
+                "authcode", jwtToken,
+                "authcodeLong", jwtToken,
+                "backurl", "\\/index.php");
+        return MsgResult.doneUrl(data, PageConst.INDEX_PAGE,"登录成功");
 
     }
 
@@ -77,7 +88,7 @@ public class LoginController {
      */
     @GetMapping("logined/b2c_user")
     public MsgResult b2c_user() {
-        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
         UserInfoVO userInfoVO = userInfoConvert.getUserVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userInfoVO, "navList", UserMenuVO.getNavList());
         return MsgResult.doneUrl(data,PageConst.USER_INDEX);

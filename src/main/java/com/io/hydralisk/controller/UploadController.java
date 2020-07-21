@@ -8,6 +8,7 @@ import com.io.hydralisk.mapper.UserInfoMapper;
 import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.UserPassVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +44,7 @@ public class UploadController {
     @PostMapping("/upload/img/user_head")
     public MsgResult uploadUserHead(@RequestParam("upimg") MultipartFile file) {
         uploadHeadImg(file);
-        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userPassVO);
         return MsgResult.doneUrl(data, PageConst.USER_PWD_SHOW);
@@ -55,7 +56,7 @@ public class UploadController {
     @PostMapping("/upload/img/user_head_save")
     public MsgResult user_head_save(@RequestParam("upimg") MultipartFile file) {
         uploadHeadImg(file);
-        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
         UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
         Map data = CCommonUtils.ofMap("data", userPassVO);
         return MsgResult.doneUrl(data, PageConst.USER_PWD_SHOW);
@@ -66,7 +67,7 @@ public class UploadController {
      */
     private void uploadHeadImg(@RequestParam("upimg") MultipartFile file) {
         try {
-            UserInfo defaultUser = userInfoMapper.getDefaultUser();
+            UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
             String headFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
             File newFiel = new File(headFileName);
             file.transferTo(newFiel);

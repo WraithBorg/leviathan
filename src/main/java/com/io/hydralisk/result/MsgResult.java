@@ -65,7 +65,10 @@ public class MsgResult<T> {
         return new MsgResult<>(null, message, null, MsgResultType.SUCCESS);
     }
     public static <T> MsgResult<T> doneUrl(T data,String url) {
-        return new MsgResult<>(data, null, null, MsgResultType.SUCCESS);
+        return new MsgResult(data,   null, null,MsgResultType.SUCCESS,url);
+    }
+    public static <T> MsgResult<T> doneUrl(T data,String url ,String  message) {
+        return new MsgResult(data,   message, null,MsgResultType.SUCCESS,url);
     }
     @SuppressWarnings("unchecked")
     public static <T> MsgResult doneUrl(String datatype, T data, String url) {

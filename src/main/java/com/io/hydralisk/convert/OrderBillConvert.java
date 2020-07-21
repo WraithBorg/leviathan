@@ -14,7 +14,7 @@ public class OrderBillConvert {
 
         OrderBill4ListVO vo = new OrderBill4ListVO();
         vo.setComment(info.getRemark());
-        vo.setComment(DDateUtil.format(info.getCreateTime()));
+        vo.setCreatetime(DDateUtil.format(info.getCreateTime()));
         vo.setGoods_money(DDecimalUtil.format(info.getSumMoney()));
         vo.setIspay(info.getState().equals(OrderState.UN_SEND.id) ? 1 : 0);
         vo.setMoney(DDecimalUtil.format(info.getSumMoney()));

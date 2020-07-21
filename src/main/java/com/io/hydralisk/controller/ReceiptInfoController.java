@@ -9,6 +9,7 @@ import com.io.hydralisk.result.MsgResult;
 import com.io.hydralisk.service.usb.ReceiptInfoService;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.ReceiptInfoVO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +26,8 @@ import java.util.Map;
  */
 @RestController
 public class ReceiptInfoController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     @Resource
     private ReceiptInfoConvert receiptConvert;
     @Resource
@@ -37,7 +41,7 @@ public class ReceiptInfoController {
     @GetMapping("/user_address/my")
     public MsgResult userAddress() {
         //
-        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
         List<ReceiptInfo> receiptInfos = receiptInfoService.selectList(defaultUser.getId());
         List<ReceiptInfoVO> receiptVOS = receiptConvert.getReceiptVOS(receiptInfos);
         Map data = CCommonUtils.ofMap("list", receiptVOS,
@@ -68,9 +72,10 @@ public class ReceiptInfoController {
      */
     @PostMapping("/user_address/save")
     public MsgResult save(ReceiptInfoDTO addressDTO) {
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
         if (addressDTO.getId() == null) {
             ReceiptInfo receiptInfo = receiptConvert.getReceiptInfo(addressDTO);
-            receiptInfoService.insert(receiptInfo);
+            receiptInfoService.insert(currentUser,receiptInfo);
             Map data = CCommonUtils.ofMap("data", null);
             return MsgResult.doneUrl(data, PageConst.ADDRESS_ADD);
         }

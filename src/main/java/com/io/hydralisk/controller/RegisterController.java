@@ -1,5 +1,6 @@
 package com.io.hydralisk.controller;
 
+import com.io.hydralisk.annotate.WithoutLogin;
 import com.io.hydralisk.domain.UserInfo;
 import com.io.hydralisk.dto.RegisterDTO;
 import com.io.hydralisk.mapper.UserInfoMapper;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +22,14 @@ import java.util.Map;
 public class RegisterController {
     private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
     @Resource
+    private HttpServletRequest httpServletRequest;
+    @Resource
     private UserInfoMapper userInfoMapper;
 
     /**
      * 获取验证码
      */
+    @WithoutLogin
     @CrossOrigin(origins = "*")
     @GetMapping(params = "m=SendSms")
     public void SendSms(@RequestParam(required = false) String telephone) {
@@ -32,6 +37,10 @@ public class RegisterController {
         logger.info("获取验证码。");
     }
 
+    /**
+     * 用戶註冊
+     */
+    @WithoutLogin
     @PostMapping(params = "m=regsave")
     public Object regsave(RegisterDTO registerDTO) {
         logger.info("用戶註冊註冊註冊。注册");

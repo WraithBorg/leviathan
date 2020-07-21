@@ -18,6 +18,7 @@ import com.io.hydralisk.service.usb.ReceiptInfoService;
 import com.io.hydralisk.service.usb.ShopCartItemService;
 import com.io.hydralisk.service.usb.UserInfoService;
 import com.io.hydralisk.util.CCommonUtils;
+import com.io.hydralisk.util.SessionUtil;
 import com.io.hydralisk.vo.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,8 @@ import java.util.Map;
 
 @RestController
 public class OrderBillController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     @Resource
     private ReceiptInfoConvert receiptConvert;
     @Resource
@@ -57,7 +61,7 @@ public class OrderBillController {
     @GetMapping("/b2c_order/confirm")
     public MsgResult confirm(@RequestParam(required = false) String user_address_id) {
         // 获取登陆人信息
-        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
         // 查询收货地址列表
         List<ReceiptInfo> receiptInfos = receiptInfoService.selectList(defaultUser.getId());
         List<ReceiptInfoVO> receiptVOS = receiptConvert.getReceiptVOS(receiptInfos);
@@ -100,7 +104,7 @@ public class OrderBillController {
      */
     @GetMapping("/b2c_order/myorder")
     public MsgResult myorder(String type) {
-        UserInfo defaultUser = userInfoService.getDefaultUser();
+        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
         List<OrderBill> myOrder = orderBillService.getMyOrder(defaultUser.getId(), type);
         List<OrderBill4ListVO> orderBillVOS = orderBill4ListConvert.getOrderBill4ListVOS(myOrder);
         Map<String, Object> data = CCommonUtils.ofMap("type", type, "per_page", 0, "list", orderBillVOS);
@@ -112,8 +116,8 @@ public class OrderBillController {
      */
     @PostMapping("/b2c_order/createorder")
     public Object createOrder(CreateOrderDTO createOrderDTO) {
-        System.out.println(createOrderDTO.getBackurl());
-        orderBillService.createOrder(createOrderDTO);
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
+        orderBillService.createOrder(currentUser,createOrderDTO);
         return null;
     }
 

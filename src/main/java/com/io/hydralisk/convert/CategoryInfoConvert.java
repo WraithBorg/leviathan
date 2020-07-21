@@ -1,6 +1,5 @@
 package com.io.hydralisk.convert;
 
-import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.domain.CategoryInfo;
 import com.io.hydralisk.util.CCommonUtils;
@@ -17,6 +16,7 @@ import java.util.stream.Collectors;
 @Component
 public class CategoryInfoConvert {
     private final String finalFatherID = "0";//父类的pid
+
     public List<CategoryVO> getCategoryVOS(List<CategoryInfo> categoryInfos) {
         List<CategoryVO> categoryVOS = categoryInfos.stream().map(this::getCategoryVO).collect(Collectors.toList());
         List<CategoryVO> bigCats = categoryVOS.stream().filter(m -> m.getPid().equals(finalFatherID)).collect(Collectors.toList());
@@ -33,8 +33,8 @@ public class CategoryInfoConvert {
         categoryVO.setDescription(categoryInfo.getName());
         categoryVO.setEx_table_id(0L);
 
-        if (CCommonUtils.isNotBlank(categoryInfo.getImgUrl())){
-            categoryVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
+        if (CCommonUtils.isNotBlank(categoryInfo.getImgUrl())) {
+            categoryVO.setImgurl(PageConst.IMG_PATH + "static/index_flash_01.png");
         }
 
         categoryVO.setOrderindex(0);
@@ -43,11 +43,13 @@ public class CategoryInfoConvert {
         categoryVO.setTitle(categoryInfo.getName());
         return categoryVO;
     }
+
     public List<Category4IndexVO> getCategory4IndexVOS(List<CategoryInfo> categoryInfos) {
         List<Category4IndexVO> categoryVOS = categoryInfos.stream().map(this::getCategory4IndexVO).collect(Collectors.toList());
         return categoryVOS;
     }
-    private Category4IndexVO getCategory4IndexVO(CategoryInfo categoryInfo){
+
+    private Category4IndexVO getCategory4IndexVO(CategoryInfo categoryInfo) {
         Category4IndexVO categoryVO = new Category4IndexVO();
         categoryVO.setId(categoryInfo.getId());
         categoryVO.setInfo(categoryInfo.getName());

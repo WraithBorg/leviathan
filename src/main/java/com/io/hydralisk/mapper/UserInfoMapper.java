@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
 
-    @Select(" select * from user_info where telephone = '" + CConstant.DEFAULT_TELEPHONE + "' ")
-    public UserInfo getDefaultUser();
+//    @Select(" select * from user_info where telephone = '" + CConstant.DEFAULT_TELEPHONE + "' ")
+//    public UserInfo getDefaultUser();
 
 }

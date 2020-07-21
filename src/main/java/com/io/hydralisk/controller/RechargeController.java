@@ -6,6 +6,8 @@ import com.io.hydralisk.util.CCommonUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -14,6 +16,8 @@ import java.util.Map;
  */
 @RestController
 public class RechargeController {
+    @Resource
+    private HttpServletRequest httpServletRequest;
     /**
      * 查询充值记录
      */
