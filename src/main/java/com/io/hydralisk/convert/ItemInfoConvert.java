@@ -57,9 +57,9 @@ public class ItemInfoConvert {
         itemInfoVO.setId(itemInfo.getId());
         itemInfoVO.setImgsdata(itemInfo.getDefaultImg());
         if (CCommonUtils.isNotBlank(itemInfo.getDefaultImg())) {
-            itemInfoVO.setImgurl(PageConst.IMG_PATH + "static/hot_book.png");
+            itemInfoVO.setImgurl(PageConst.IMG_PATH + "hot_book.png");
         }else {
-            itemInfoVO.setImgurl(PageConst.IMG_PATH + "static/hot_book.png");
+            itemInfoVO.setImgurl(PageConst.IMG_PATH + "hot_book.png");
         }
 
         itemInfoVO.setIncart(cartAmount > 0 ? 1 : 0);
@@ -105,9 +105,9 @@ public class ItemInfoConvert {
         itemInfoVO.setBuy_num(itemInfo.getBuyNum());
         itemInfoVO.setId(itemInfo.getId());
         if (CCommonUtils.isNotBlank(itemInfo.getDefaultImg())) {
-            itemInfoVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
+            itemInfoVO.setImgurl( PageConst.IMG_PATH + "index_flash_01.png");
         }else{
-            itemInfoVO.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
+            itemInfoVO.setImgurl( PageConst.IMG_PATH + "index_flash_01.png");
         }
 
         itemInfoVO.setPrice(DDecimalUtil.format(itemInfo.getPrice()));

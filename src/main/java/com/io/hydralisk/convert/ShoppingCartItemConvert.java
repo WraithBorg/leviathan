@@ -21,7 +21,7 @@ public class ShoppingCartItemConvert {
         vo.setCreatetime(DDateUtil.format(info.getCreateTime()));
         vo.setEtime(0);
         vo.setId(info.getId());
-        vo.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
+        vo.setImgurl( PageConst.IMG_PATH + "index_flash_01.png");
         vo.setKs_title("");
         vo.setKsid(0L);
         vo.setOtype("");

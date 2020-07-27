@@ -1,6 +1,5 @@
 package com.io.hydralisk.vo;
 
-import com.io.hydralisk.constant.CConstant;
 import com.io.hydralisk.constant.PageConst;
 
 public class Site4IndexVO {
@@ -9,7 +8,7 @@ public class Site4IndexVO {
     private String title = "书香精选-精选好书";
     private String description = "书香精选-精选好书-限时优惠";
 
-    private String logo = PageConst.IMG_PATH+"/static/search_logo.png";
+    private String logo = PageConst.IMG_PATH+"/search_logo.png";
 
     private String close_why = "";
     private String domain = "";

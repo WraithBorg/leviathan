@@ -134,7 +134,7 @@ public class ItemInfoController {
             if (CCommonUtils.isBlank(m.getUrl())) {
                 return null;
             }
-            return PageConst.IMG_PATH + "static/index_flash_01.png";
+            return PageConst.IMG_PATH + "index_flash_01.png";
         }).collect(Collectors.toList());
         // 查看是否该商品是否在收藏夹里
         UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);

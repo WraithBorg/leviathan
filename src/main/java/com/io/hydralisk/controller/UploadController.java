@@ -1,6 +1,7 @@
 package com.io.hydralisk.controller;
 
 import com.io.hydralisk.chip.MultipartContext;
+import com.io.hydralisk.component.sftp.SsFtpInstance;
 import com.io.hydralisk.constant.PageConst;
 import com.io.hydralisk.convert.UserInfoConvert;
 import com.io.hydralisk.domain.UserInfo;
@@ -37,15 +38,28 @@ public class UploadController {
     private UserInfoMapper userInfoMapper;
     @Resource
     private UserInfoConvert userInfoConvert;
+    //    @Resource
+//    private SsFtpServe ssFTP;
+    @Resource
+    private SsFtpInstance ssFtpInstance;
 
     /**
      * 上传用户头像
      */
     @PostMapping("/upload/img/user_head")
-    public MsgResult uploadUserHead(@RequestParam("upimg") MultipartFile file) {
-        uploadHeadImg(file);
-        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
-        UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
+    public MsgResult uploadUserHead(@RequestParam("upimg") MultipartFile uploadFile) {
+        UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
+        try {
+            String fileName = UUID.randomUUID().toString() + "." + uploadFile.getOriginalFilename().split("\\.")[1];
+            ssFtpInstance.upload4InputStream(uploadFile.getInputStream(), fileName);
+            currentUser = userInfoMapper.selectById(currentUser.getId());
+            currentUser.setHeadImgUrl(fileName);
+            userInfoMapper.updateById(currentUser);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return MsgResult.fail("获取文件流失败！");
+        }
+        UserPassVO userPassVO = userInfoConvert.getUserPassVO(currentUser);
         Map data = CCommonUtils.ofMap("data", userPassVO);
         return MsgResult.doneUrl(data, PageConst.USER_PWD_SHOW);
     }
@@ -55,11 +69,7 @@ public class UploadController {
      */
     @PostMapping("/upload/img/user_head_save")
     public MsgResult user_head_save(@RequestParam("upimg") MultipartFile file) {
-        uploadHeadImg(file);
-        UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
-        UserPassVO userPassVO = userInfoConvert.getUserPassVO(defaultUser);
-        Map data = CCommonUtils.ofMap("data", userPassVO);
-        return MsgResult.doneUrl(data, PageConst.USER_PWD_SHOW);
+        return uploadUserHead(file);
     }
 
     /**
@@ -67,14 +77,14 @@ public class UploadController {
      */
     private void uploadHeadImg(@RequestParam("upimg") MultipartFile file) {
         try {
-            UserInfo defaultUser = SessionUtil.getCurrentUser(httpServletRequest);
+            UserInfo currentUser = SessionUtil.getCurrentUser(httpServletRequest);
             String headFileName = UUID.randomUUID().toString() + file.getOriginalFilename();
             File newFiel = new File(headFileName);
             file.transferTo(newFiel);
             copyFilex100(MultipartContext.multipartLocation + File.separator + headFileName);
-            deleteOldFile(defaultUser.getHeadImgUrl());
-            defaultUser.setHeadImgUrl("upload/"+headFileName);
-            userInfoMapper.updateById(defaultUser);
+            deleteOldFile(currentUser.getHeadImgUrl());
+            currentUser.setHeadImgUrl("upload/" + headFileName);
+            userInfoMapper.updateById(currentUser);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,13 +96,13 @@ public class UploadController {
     private void deleteOldFile(String imgUrl) {
         String oldImgPath = MultipartContext.resourceLocation + imgUrl;
         File oldImg = new File(oldImgPath);
-        if (oldImg.exists()&&oldImg.isFile()){
+        if (oldImg.exists() && oldImg.isFile()) {
             oldImg.delete();
         }
 
         String oldImgPathx100 = oldImgPath + ".100x100.jpg";
         File oldImgx100 = new File(oldImgPathx100);
-        if (oldImgx100.exists()&&oldImgx100.isFile()){
+        if (oldImgx100.exists() && oldImgx100.isFile()) {
             oldImgx100.delete();
         }
     }

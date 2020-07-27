@@ -9,7 +9,7 @@ public class Flash4IndexVO {
     private Date dateline = new Date();
     private Date endtime = new Date();
     private String id = "6";
-    private String imgurl = PageConst.IMG_PATH + "static/index_flash_01.png";
+    private String imgurl = PageConst.IMG_PATH + "index_flash_01.png";
     private String imgurl2 = "";
     private String info = "";
     private String link1 = "";

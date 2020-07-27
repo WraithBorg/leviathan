@@ -34,7 +34,7 @@ public class CategoryInfoConvert {
         categoryVO.setEx_table_id(0L);
 
         if (CCommonUtils.isNotBlank(categoryInfo.getImgUrl())) {
-            categoryVO.setImgurl(PageConst.IMG_PATH + "static/index_flash_01.png");
+            categoryVO.setImgurl(PageConst.IMG_PATH + "index_flash_01.png");
         }
 
         categoryVO.setOrderindex(0);

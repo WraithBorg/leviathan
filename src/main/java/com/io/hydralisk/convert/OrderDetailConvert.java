@@ -21,7 +21,7 @@ public class OrderDetailConvert {
         vo.setAmount(info.getAmount());
         vo.setCreatetime(DDateUtil.format(info.getCreateTime()));
         vo.setId(info.getId());
-        vo.setImgurl( PageConst.IMG_PATH + "static/index_flash_01.png");
+        vo.setImgurl( PageConst.IMG_PATH + "index_flash_01.png");
         vo.setPrice(DDecimalUtil.format(info.getItemPrice()));
         vo.setProductid(info.getItemId());
         vo.setTitle(info.getItemName());

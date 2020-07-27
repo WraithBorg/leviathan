@@ -55,7 +55,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");
-            logger.error("登录信息失效，请重新登录！" + ErrCodeConst.A0210, e);
+            logger.error("登录信息失效，请重新登录！" + ErrCodeConst.A0210, e.getMessage());
             String toJSON = JSON.toJSONString(MsgResult.fail("登录信息失效，请重新登录！" + ErrCodeConst.A0210));
             PrintWriter out = response.getWriter();
             out.append(toJSON);

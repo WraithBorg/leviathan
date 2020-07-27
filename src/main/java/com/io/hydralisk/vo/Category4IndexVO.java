@@ -14,7 +14,7 @@ public class Category4IndexVO {
     private Date dateline = new Date();
     private Date starttime = new Date();
     private Date endtime = new Date();
-    private String imgurl = PageConst.IMG_PATH + "static/book.png";
+    private String imgurl = PageConst.IMG_PATH + "book.png";
     private String imgurl2 = "";
     private String link1 = "../../pageb2c/b2c_product/list?catid=22";
     private String link2 = "../../pageb2c/b2c_product/list?catid=22";
